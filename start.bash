@@ -21,7 +21,7 @@ else
 fi
 echo "repo_name: $repo_name"
 package_name="home_package.tar.xz"
-package_location="$HOME/.cache/the_dark_side/$package_name"
+package_location="$HOME/.cache/$package_name"
 package_version_location="$HOME/.cache/the_dark_side/home_package_version"
 
 package_installed_version="$(cat "$package_version_location")"
@@ -50,6 +50,7 @@ else
     if [ -f "$package_location" ]; then
       rm "$package_location"
     fi
+    mkdir -p "$(dirname "$package_location")"
     curl -sL -o "$package_location" "https://github.com/L0L022/$repo_name/releases/download/$package_latest_version/$package_name"
     install_package "$package_location"
     echo "$package_latest_version" > "$package_version_location"
