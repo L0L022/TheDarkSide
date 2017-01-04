@@ -1,0 +1,10 @@
+[Desktop Entry]
+NoDisplay=true
+Version=1.0
+Encoding=UTF-8
+Type=X-XFCE-Helper
+X-XFCE-Category=TerminalEmulator
+X-XFCE-CommandsWithParameter=~/.cache/the_dark_side/terminix.bash "%s"
+Icon=com.gexperts.Terminix
+Name=Terminix
+X-XFCE-Commands=~/.cache/the_dark_side/terminix.bash

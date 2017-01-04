@@ -33,7 +33,7 @@ xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
 
 xdg-user-dirs-update
 cp /usr/share/applications/{firefox-esr,libreoffice-startcenter,scilab,chromium,kde4/kcalc,exo-terminal-emulator}.desktop "$DESKTOP"
-sed -i "s|~|$HOME|g" "$HOME/.local/share/applications/atom.desktop"
+sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
 cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
 cp "$HOME/.cache/the_dark_side/the_dark_side.desktop" "$DESKTOP"
 chmod u+x "$DESKTOP"/*
@@ -50,7 +50,7 @@ sed -i "s|~|$HOME|g" "$HOME/.config/autostart/the_dark_side_check_version.deskto
 
 echo "WebBrowser=firefox" > "$HOME/.config/xfce4/helpers.rc"
 echo "FileManager=Thunar" >> "$HOME/.config/xfce4/helpers.rc"
-echo "TerminalEmulator=xfce4-terminal" >> "$HOME/.config/xfce4/helpers.rc"
+echo "TerminalEmulator=custom-TerminalEmulator" >> "$HOME/.config/xfce4/helpers.rc"
 
 sed -i "s|~|$HOME|g" "$HOME/.atom/config.cson"
 sed -i "s/USER/$USER/g" "$HOME/.atom/data-atom-connections.cson"

@@ -136,10 +136,20 @@ function install_shellcheck {
 	cd ..
 }
 
+function install_terminix {
+	wget -c -O Terminix.AppImage "https://bintray.com/probono/AppImages/download_file?file_path=Terminix-1.30-x86_64.AppImage"
+	mv Terminix.AppImage ../terminix.bash home_copy/.cache/the_dark_side/
+	chmod u+x home_copy/.cache/the_dark_side/{Terminix.AppImage,terminix.bash}
+	mkdir -p home_copy/.local/share/applications home_copy/.local/share/xfce4/helpers
+	cp ../com.gexperts.Terminix.desktop home_copy/.local/share/applications/
+	cp ../custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
+}
+
 function install_software {
 	install_atom
 	install_atom_packages
 	install_shellcheck
+	install_terminix
 }
 
 install_theme

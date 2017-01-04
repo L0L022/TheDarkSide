@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Terminix
+Comment=A tiling terminal for Gnome
+Exec=~/.cache/the_dark_side/terminix.bash
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=System;TerminalEmulator;X-GNOME-Utilities;
+Icon=com.gexperts.Terminix
+DBusActivatable=true
