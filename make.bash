@@ -145,11 +145,24 @@ function install_terminix {
 	cp ../custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
 }
 
+function install_tmux {
+	mkdir tmux
+	cd tmux || exit
+	wget -c -O tmux.deb "http://ftp.fr.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb"
+	ar x tmux.deb data.tar.xz
+	tar xf data.tar.xz
+	mkdir -p ../home_copy/.cache/the_dark_side/
+	mv usr/bin/tmux ../home_copy/.cache/the_dark_side/
+	chmod u+x ../home_copy/.cache/the_dark_side/tmux
+	cd ..
+}
+
 function install_software {
 	install_atom
 	install_atom_packages
 	install_shellcheck
 	install_terminix
+	install_tmux
 }
 
 install_theme
