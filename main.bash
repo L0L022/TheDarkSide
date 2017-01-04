@@ -14,6 +14,9 @@ xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 2
 
 xfconf-query -n -c keyboards -p /Default/Numlock -t bool -s true
 
+xfconf-query -r -R -c xfce4-panel -p /
+XFCE_PANEL_MIGRATE_DEFAULT="" /usr/lib/x86_64-linux-gnu/xfce4/panel/migrate
+xfce4-panel -r &
 xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 2
 xfconf-query -n -c xfce4-panel -p /panels/panel-2/autohide -t bool -s true
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/show-button-title -t bool -s false
