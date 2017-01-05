@@ -7,7 +7,7 @@ xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s "$THEME"
 xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Arc
 
 xfconf-query -n -c xfwm4 -p /general/theme -t string -s "$THEME"
-xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s false
+xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_frame_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_popup_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 2
@@ -70,14 +70,17 @@ fc-cache -f "$HOME/.local/share/fonts"
 
 source "$HOME/.bashrc"
 function with_new_bashrc {
+  dconf write /com/gexperts/Terminix/quake-height-percent 50
   dconf write /com/gexperts/Terminix/profiles/the_dark_side/visible-name "'The Dark Side'"
   dconf write /com/gexperts/Terminix/profiles/list "['the_dark_side']"
   dconf write /com/gexperts/Terminix/profiles/default "'the_dark_side'"
   dconf write /com/gexperts/Terminix/profiles/the_dark_side/font "'Roboto Mono Medium for Powerline Medium 12'"
   dconf write /com/gexperts/Terminix/profiles/the_dark_side/use-system-font false
-  
+  dconf write /com/gexperts/Terminix/profiles/the_dark_side/terminal-bell "'icon'"
+  dconf write /com/gexperts/Terminix/profiles/the_dark_side/cursor-shape "'underline'"
+
   bash-it enable plugin alias-completion base dirs extract git git-subrepo history proxy ssh tmux xterm
-  bash-it enable completion bash-it default dirs git makefile ssh system tmux
+  bash-it enable completion bash-it defaults dirs git makefile ssh system tmux
   reload
 }
 bash -i -c "#$(type with_new_bashrc);with_new_bashrc"

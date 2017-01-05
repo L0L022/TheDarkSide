@@ -2,9 +2,13 @@
   "atom-html-preview":
     scrollToCursor: true
   core:
+    audioBeep: false
     automaticallyUpdate: false
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
+  editor:
+    showIndentGuide: true
+    softWrap: true
   "linter-gcc":
     gccErrorString: "erreur"
     gccIncludePaths: "-"

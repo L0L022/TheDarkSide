@@ -171,6 +171,8 @@ function install_terminix {
 	mkdir -p home_copy/.local/share/applications home_copy/.local/share/xfce4/helpers
 	cp ../com.gexperts.Terminix.desktop home_copy/.local/share/applications/
 	cp ../custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
+	mkdir -p home_copy/.local/share/appimagekit
+	touch home_copy/.local/share/appimagekit/no_desktopintegration
 }
 
 function install_tmux {

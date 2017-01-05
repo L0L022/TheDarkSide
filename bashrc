@@ -25,3 +25,5 @@ export SCM_CHECK=true
 export SCM_GIT_SHOW_DETAILS=true
 export EDITOR=vim
 source "$BASH_IT/bash_it.sh"
+
+complete -d cd
