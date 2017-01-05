@@ -2,7 +2,7 @@
 #mettre des trucs débiles
 
 curl -so "$HOME/.cache/the_dark_side/wallpaper.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
-unzip "$HOME/.cache/the_dark_side/wallpaper.zip" -d "$HOME/.cache/the_dark_side/"
+unzip -o "$HOME/.cache/the_dark_side/wallpaper.zip" -d "$HOME/.cache/the_dark_side/"
 rm "$HOME/.cache/the_dark_side/wallpaper.zip"
 xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/i-love-bash/ILoveBash_1920x1200.png"
 
