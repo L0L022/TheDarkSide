@@ -6,6 +6,10 @@
     automaticallyUpdate: false
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
+    themes: [
+      "northem-dark-atom-ui"
+      "monokai-blackboard"
+    ]
   editor:
     showIndentGuide: true
     softWrap: true

@@ -1,10 +1,14 @@
 ask-stack
 atom-bootstrap3
 atom-html-preview
+build
+build-cmake
+build-make
 color-picker
 data-atom
 file-icons
 git-plus
+language-cmake
 linter
 linter-csslint
 linter-gcc
@@ -19,7 +23,10 @@ minimap-git-diff
 minimap-highlight-selected
 minimap-linter
 minimap-selection
+monokai-blackboard
+northem-dark-atom-ui
 random
+scilab-language
 script
 switch-header-source
 webbox-color
