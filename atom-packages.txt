@@ -1,6 +1,7 @@
 ask-stack
 atom-bootstrap3
 atom-html-preview
+atom-monokai
 build
 build-cmake
 build-make
@@ -23,7 +24,6 @@ minimap-git-diff
 minimap-highlight-selected
 minimap-linter
 minimap-selection
-monokai-blackboard
 northem-dark-atom-ui
 random
 scilab-language

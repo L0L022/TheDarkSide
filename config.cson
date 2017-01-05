@@ -8,7 +8,7 @@
     telemetryConsent: "limited"
     themes: [
       "northem-dark-atom-ui"
-      "monokai-blackboard"
+      "atom-monokai"
     ]
   editor:
     showIndentGuide: true
