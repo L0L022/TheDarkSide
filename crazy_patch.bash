@@ -13,10 +13,15 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global push.default simple
   curl -so "$HOME/.cache/the_dark_side/lebonwallpaper.jpg" http://orig12.deviantart.net/604a/f/2012/168/b/7/choose_your_weapon_1920x1080_hd_wallpaper_by_therierie-d53udl6.jpg
   xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/lebonwallpaper.jpg"
+  ln -s "$HOME/net-home/ssh/" "$HOME/.ssh"
+  #ssh-keyscan github.com >> ~/.ssh/known_hosts
+  git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
 fi
 
 if echo "$USER" | grep -q "e16006130"; then
   bash "$HOME/net-home/start_git.bash"
-  git clone https://github.com/L0L022/sem1_iut "$HOME/Bureau/sem1_iut"
-  git clone https://github.com/L0L022/projet_bash "$HOME/Bureau/projet_bash"
+  ln -s "$HOME/net-home/ssh/" "$HOME/.ssh"
+  #ssh-keyscan github.com >> ~/.ssh/known_hosts
+  git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
+  git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
 fi
