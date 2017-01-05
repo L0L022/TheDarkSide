@@ -35,8 +35,23 @@ function install_arc_theme {
 	cd ..
 }
 
+function install_powerline_fonts {
+	get_source "powerline/fonts"
+	cd fonts || exit
+	HOME=../home_copy/ bash ./install.sh
+	cd ..
+}
+
+function install_bash_it {
+	mkdir -p home_copy/.cache/the_dark_side/
+	git clone --depth=1 https://github.com/Bash-it/bash-it.git home_copy/.cache/the_dark_side/bash_it
+	HOME="$(realpath home_copy)" bash home_copy/.cache/the_dark_side/bash_it/install.sh --silent --no-modify-config
+}
+
 function install_theme {
 	install_arc_theme
+	install_powerline_fonts
+	install_bash_it
 }
 
 function install_faba_icon_theme {
@@ -136,9 +151,22 @@ function install_shellcheck {
 	cd ..
 }
 
+function install_dconf {
+	mkdir dconf
+	cd dconf || exit
+	wget -c -O dconf.deb "http://ftp.fr.debian.org/debian/pool/main/d/d-conf/dconf-cli_0.22.0-1_amd64.deb"
+	ar x dconf.deb data.tar.xz
+	tar xf data.tar.xz
+	mkdir -p ../home_copy/.cache/the_dark_side/
+	mv usr/bin/dconf ../home_copy/.cache/the_dark_side/
+	chmod u+x ../home_copy/.cache/the_dark_side/dconf
+	cd ..
+}
+
 function install_terminix {
 	wget -c -O Terminix.AppImage "https://bintray.com/probono/AppImages/download_file?file_path=Terminix-1.30-x86_64.AppImage"
-	mv Terminix.AppImage ../terminix.bash home_copy/.cache/the_dark_side/
+	mv Terminix.AppImage home_copy/.cache/the_dark_side/
+	cp ../terminix.bash home_copy/.cache/the_dark_side/
 	chmod u+x home_copy/.cache/the_dark_side/{Terminix.AppImage,terminix.bash}
 	mkdir -p home_copy/.local/share/applications home_copy/.local/share/xfce4/helpers
 	cp ../com.gexperts.Terminix.desktop home_copy/.local/share/applications/
@@ -161,9 +189,12 @@ function install_software {
 	install_atom
 	install_atom_packages
 	install_shellcheck
+	install_dconf
 	install_terminix
 	install_tmux
 }
+
+cp ../bashrc home_copy/.bashrc
 
 install_theme
 install_icon_theme

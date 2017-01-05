@@ -26,6 +26,8 @@ xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -t bool -s false
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-trash -t bool -s false
 
+xfconf-query -n -c xfce4-keyboard-shortcuts -p '/commands/custom/Super_L' -t string -s "$HOME/.cache/the_dark_side/terminix.bash -q"
+
 xfconf-query -n -c xfce4-session -p /general/SaveOnExit -t bool -s false
 
 xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
@@ -63,3 +65,19 @@ gsettings set org.gtk.Settings.FileChooser startup-mode cwd
 mkdir -p "$HOME/.config/gtk-2.0/"
 echo "[Filechooser Settings]" > "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
 echo "StartupMode=cwd" >> "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
+
+fc-cache -f "$HOME/.local/share/fonts"
+
+source "$HOME/.bashrc"
+function with_new_bashrc {
+  dconf write /com/gexperts/Terminix/profiles/the_dark_side/visible-name "'The Dark Side'"
+  dconf write /com/gexperts/Terminix/profiles/list "['the_dark_side']"
+  dconf write /com/gexperts/Terminix/profiles/default "'the_dark_side'"
+  dconf write /com/gexperts/Terminix/profiles/the_dark_side/font "'Roboto Mono Medium for Powerline Medium 12'"
+  dconf write /com/gexperts/Terminix/profiles/the_dark_side/use-system-font false
+  
+  bash-it enable plugin alias-completion base dirs extract git git-subrepo history proxy ssh tmux xterm
+  bash-it enable completion bash-it default dirs git makefile ssh system tmux
+  reload
+}
+bash -i -c "#$(type with_new_bashrc);with_new_bashrc"

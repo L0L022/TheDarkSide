@@ -63,3 +63,6 @@ bash "$HOME/.cache/the_dark_side/crazy_patch.bash"
 
 echo "update atom packages"
 "$HOME/.cache/the_dark_side/atom/resources/app/apm/bin/apm" upgrade --no-confirm
+
+echo "update bash-it"
+bash-it update
