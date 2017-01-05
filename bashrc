@@ -16,6 +16,7 @@ function tmux {
 #chmod 777 /tmp/tmux
 alias dconf=~/.cache/the_dark_side/dconf
 alias terminix=~/.cache/the_dark_side/terminix.bash
+alias apm=~/.cache/the_dark_side/atom/resources/app/apm/bin/apm
 
 export BASH_IT="$HOME/.cache/the_dark_side/bash_it"
 export BASH_IT_THEME='powerline-multiline'

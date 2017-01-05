@@ -57,12 +57,4 @@ else
   fi
 fi
 
-echo "install crazy_patch.bash"
-curl -sL -o "$HOME/.cache/the_dark_side/crazy_patch.bash" "https://raw.githubusercontent.com/L0L022/$repo_name/master/crazy_patch.bash"
-bash "$HOME/.cache/the_dark_side/crazy_patch.bash"
-
-echo "update atom packages"
-"$HOME/.cache/the_dark_side/atom/resources/app/apm/bin/apm" upgrade --no-confirm
-
-echo "update bash-it"
-bash-it update
+bash -i "$HOME/.cache/the_dark_side/update.bash"
