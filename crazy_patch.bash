@@ -30,4 +30,17 @@ if echo "$USER" | grep -q "e16006130"; then
   #ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+
+  wget -O ~/Bureau/KDevelop.AppImage http://download.kde.org/stable/kdevelop/5.0.3/bin/linux/KDevelop-5.0.3-x86_64.AppImage
+  chmod +x ~/Bureau/KDevelop.AppImage
+fi
+
+if echo "$USER" | grep -q "d16002496"; then
+  xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 1
+  xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 1
+  xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s Adwaita
+  xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
+  xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
+  apm install atom-material-ui atom-material-syntax-light
+  sed -i -e "s/northem-dark-atom-ui/atom-material-ui/g" -e "s/atom-monokai/atom-material-syntax-light/g" "$HOME/.atom/config.cson"
 fi
