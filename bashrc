@@ -11,9 +11,10 @@ fi
 
 function tmux {
   ~/.cache/the_dark_side/tmux -S /tmp/tmux
+  chmod 777 /tmp/tmux
 }
-#tmux
-#chmod 777 /tmp/tmux
+tmux new -d -s the_dark_side 2>/dev/null
+
 alias dconf=~/.cache/the_dark_side/dconf
 alias terminix=~/.cache/the_dark_side/terminix.bash
 alias apm=~/.cache/the_dark_side/atom/resources/app/apm/bin/apm
