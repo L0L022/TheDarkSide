@@ -5,6 +5,7 @@ DESKTOP="$(xdg-user-dir DESKTOP)"
 
 xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s "$THEME"
 xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Arc
+xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s Hacked-Green
 
 xfconf-query -n -c xfwm4 -p /general/theme -t string -s "$THEME"
 xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true

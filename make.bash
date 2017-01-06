@@ -114,6 +114,19 @@ function install_icon_theme {
 	install_arc_icon_theme
 }
 
+function install_hacked_green {
+	mkdir hacked_green && cd hacked_green || exit
+	wget -c -O Hacked-Green.tgz "https://www.dropbox.com/s/jzinbd7o5fnkzhi/Hacked-Green.tgz?dl=0#"
+	mkdir -p ../home_copy/.icons/
+	tar -xf Hacked-Green.tgz
+	mv Hacked-Green ../home_copy/.icons/
+	cd ..
+}
+
+function install_cursor_theme {
+	install_hacked_green
+}
+
 function install_atom {
 	atom_version="$(git ls-remote --tags "https://github.com/atom/atom/" | sed "s|.*refs/tags/\(.*\)$|\1|g" | grep -v "beta" | sort -V | tail -n 1)"
 	mkdir -p home_copy/.cache/the_dark_side/atom
@@ -200,6 +213,7 @@ cp ../bashrc home_copy/.bashrc
 
 install_theme
 install_icon_theme
+install_cursor_theme
 install_software
 
 mkdir -p home_copy/.config/autostart
