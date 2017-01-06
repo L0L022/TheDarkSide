@@ -1,13 +1,19 @@
 #!/bin/bash
 
+fc-cache -f "$HOME/.local/share/fonts"
+
 THEME="Arc-Dark"
 DESKTOP="$(xdg-user-dir DESKTOP)"
 
 xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s "$THEME"
 xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Arc
 xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s Hacked-Green
+xfconf-query -n -c xsettings -p /Gtk/FontName -t string -s "Roboto Mono for Powerline 10"
+xfconf-query -n -c xsettings -p /Xft/Antialias -t int -s 1
+xfconf-query -n -c xsettings -p /Xft/HintStyle -t string -s "hintfull"
 
 xfconf-query -n -c xfwm4 -p /general/theme -t string -s "$THEME"
+xfconf-query -n -c xfwm4 -p /general/title_font -t string -s "Roboto Mono Medium for Powerline Bold Italic 10"
 xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_frame_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_popup_shadow -t bool -s true
@@ -67,7 +73,7 @@ mkdir -p "$HOME/.config/gtk-2.0/"
 echo "[Filechooser Settings]" > "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
 echo "StartupMode=cwd" >> "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
 
-fc-cache -f "$HOME/.local/share/fonts"
+echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n" > "$HOME/.config/xfce4/terminal/terminalrc"
 
 source "$HOME/.bashrc"
 function with_new_bashrc {

@@ -38,7 +38,14 @@ function install_arc_theme {
 function install_powerline_fonts {
 	get_source "powerline/fonts"
 	cd fonts || exit
-	HOME=../home_copy/ bash ./install.sh
+	#HOME=../home_copy/ bash ./install.sh
+	#from install.sh
+	powerline_fonts_dir=$( cd "$( dirname "$0" )" && pwd )
+	find_command="find \"$powerline_fonts_dir\" \( -name '*.[o,t]tf' -or -name '*.pcf.gz' \) -type f -print0"
+	font_dir="../home_copy/.local/share/fonts"
+	mkdir -p $font_dir
+	echo "Copying fonts..."
+	eval $find_command | xargs -0 -I % cp "%" "$font_dir/"
 	cd ..
 }
 
