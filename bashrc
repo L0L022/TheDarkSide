@@ -10,7 +10,7 @@ if [[ $TERMINIX_ID ]]; then
 fi
 
 function tmux {
-  ~/.cache/the_dark_side/tmux -S /tmp/tmux
+  ~/.cache/the_dark_side/tmux -S /tmp/tmux "$@"
   chmod 777 /tmp/tmux
 }
 tmux new -d -s the_dark_side 2>/dev/null
