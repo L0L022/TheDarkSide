@@ -40,12 +40,24 @@ xfconf-query -n -c xfce4-session -p /general/SaveOnExit -t bool -s false
 xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
 xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
 
+function make_desktop_website {
+  echo "[Desktop Entry]
+Encoding=UTF-8
+Name=$1
+Type=Link
+URL=$2
+Icon=emblem-web" > "$DESKTOP/$3.desktop"
+}
+
 xdg-user-dirs-update
-cp /usr/share/applications/{firefox-esr,libreoffice-startcenter,scilab,chromium,kde4/kcalc,exo-terminal-emulator}.desktop "$DESKTOP"
+cp /usr/share/applications/{firefox-esr,exo-terminal-emulator,scilab,blender,chromium,kde4/kcalc,libreoffice-startcenter}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
 cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
-cp "$HOME/.cache/the_dark_side/the_dark_side.desktop" "$DESKTOP"
+make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side"
+make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
+make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref"
 chmod u+x "$DESKTOP"/*
+xfdesktop --arrange
 
 mkdir -p "$HOME/.local/share/applications/"
 xdg-mime default Thunar.desktop inode/directory

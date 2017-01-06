@@ -14,6 +14,7 @@ function copy_ssh {
 
 if echo "$USER" | grep -q "d16007062"; then
   rm /home/d16007062/Bureau/chromium.desktop
+  xfdesktop --arrange
   xdg-mime default firefox-esr.desktop text/html
   cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
   git config --global user.name "bohrin"
