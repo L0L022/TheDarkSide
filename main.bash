@@ -69,6 +69,7 @@ xdg-mime default xarchiver.desktop application/x-arj application/arj application
 cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
 
 sed -i "s|~|$HOME|g" "$HOME/.config/autostart/the_dark_side_check_version.desktop"
+sed -i "s|~|$HOME|g" "$HOME/.config/autostart/the_dark_side_update.desktop"
 
 echo "WebBrowser=firefox" > "$HOME/.config/xfce4/helpers.rc"
 echo "FileManager=Thunar" >> "$HOME/.config/xfce4/helpers.rc"
