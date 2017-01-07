@@ -1,6 +1,7 @@
 #!/bin/bash
 
 fc-cache -f "$HOME/.local/share/fonts"
+xdg-user-dirs-update
 
 THEME="Arc-Dark"
 DESKTOP="$(xdg-user-dir DESKTOP)"
@@ -51,7 +52,6 @@ URL=$2
 Icon=emblem-web" > "$DESKTOP/$3.desktop"
 }
 
-xdg-user-dirs-update
 cp /usr/share/applications/{firefox-esr,exo-terminal-emulator,scilab,blender,chromium,kde4/kcalc,libreoffice-startcenter}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
 cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
@@ -88,6 +88,7 @@ mkdir -p "$HOME/.config/gtk-2.0/"
 echo "[Filechooser Settings]" > "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
 echo "StartupMode=cwd" >> "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
 
+mkdir -p "$HOME/.config/xfce4/terminal/"
 echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n" > "$HOME/.config/xfce4/terminal/terminalrc"
 
 source "$HOME/.bashrc"

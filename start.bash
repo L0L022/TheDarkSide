@@ -59,7 +59,7 @@ function install_package {
   if [ "$use_gui" = true ]; then
     install_pv
     echo "extract"
-    (/tmp/pv/usr/bin/pv -n "$package_location" | tar xJf - -C "$HOME") 2>&1
+    (/tmp/pv/usr/bin/pv -nC "$package_location" | tar xJf - -C "$HOME") 2>&1
   else
     echo "extract"
     tar xf "$package_location" -C "$HOME"
