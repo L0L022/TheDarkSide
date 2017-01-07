@@ -226,6 +226,6 @@ install_software
 mkdir -p home_copy/.config/autostart
 cp ../the_dark_side_check_version.desktop ../the_dark_side_update.desktop home_copy/.config/autostart/
 
-cp ../main.bash ../check_version.bash ../update.bash ../wallpaper_cli.png home_copy/.cache/the_dark_side/
+cp ../main.bash ../check_version.bash ../update.bash ../the_dark_side.bash ../wallpaper_cli.png home_copy/.cache/the_dark_side/
 tar -cJf home_package.tar.xz -C home_copy .
 mv home_package.tar.xz ../
