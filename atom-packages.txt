@@ -5,11 +5,13 @@ atom-monokai
 build
 build-cmake
 build-make
+busy
 color-picker
 data-atom
 file-icons
 git-plus
 language-cmake
+language-pgsql
 linter
 linter-csslint
 linter-gcc
