@@ -12,6 +12,7 @@ xfconf-query -n -c xsettings -p /Gtk/FontName -t string -s "Roboto Mono for Powe
 xfconf-query -n -c xsettings -p /Xft/Antialias -t int -s 1
 xfconf-query -n -c xsettings -p /Xft/HintStyle -t string -s "hintfull"
 
+xfconf-query -n -c xfwm4 -p /general/theme -t string -s "Default"
 xfconf-query -n -c xfwm4 -p /general/theme -t string -s "$THEME"
 xfconf-query -n -c xfwm4 -p /general/title_font -t string -s "Roboto Mono Medium for Powerline Bold Italic 10"
 xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true
