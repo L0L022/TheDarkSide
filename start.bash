@@ -40,6 +40,7 @@ function set_variables {
 }
 
 function install_pv {
+  pv_exec="/usr/bin/pv"
   if ! pv -V >/dev/null 2>&1; then
     echo "install pv"
     old_dir="$PWD"
@@ -49,6 +50,7 @@ function install_pv {
     ar x pv.deb data.tar.xz
     tar xf data.tar.xz
     cd "$old_dir" || exit
+    pv_exec="/tmp/pv/usr/bin/pv"
   fi
 }
 
@@ -59,7 +61,7 @@ function install_package {
   if [ "$use_gui" = true ]; then
     install_pv
     echo "extract"
-    (/tmp/pv/usr/bin/pv -nC "$package_location" | tar xJf - -C "$HOME") 2>&1
+    ("$pv_exec" -nC "$package_location" | tar xJf - -C "$HOME") 2>&1
   else
     echo "extract"
     tar xf "$package_location" -C "$HOME"
