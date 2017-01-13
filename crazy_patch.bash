@@ -27,8 +27,6 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global user.name "bohrin"
   git config --global user.email "alex.dejaegher@gmail.com"
   git config --global push.default simple
-  curl -so "$HOME/.cache/the_dark_side/lebonwallpaper.jpg" http://orig12.deviantart.net/604a/f/2012/168/b/7/choose_your_weapon_1920x1080_hd_wallpaper_by_therierie-d53udl6.jpg
-  xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/lebonwallpaper.jpg"
   copy_ssh
   #ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
