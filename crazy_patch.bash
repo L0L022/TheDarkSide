@@ -14,6 +14,11 @@ function copy_ssh {
   chmod 400 ~/.ssh/id_rsa*
 }
 
+function install_atom_theme {
+  apm install "$1" "$2"
+  sed -i -e "s/northem-dark-atom-ui/$1/g" -e "s/atom-monokai/$2/g" "$HOME/.atom/config.cson"
+}
+
 if echo "$USER" | grep -q "d16007062"; then
   rm /home/d16007062/Bureau/chromium.desktop
   xfdesktop --arrange
@@ -27,6 +32,7 @@ if echo "$USER" | grep -q "d16007062"; then
   copy_ssh
   #ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+  install_atom_theme seti-ui seti-syntax
 fi
 
 if echo "$USER" | grep -q "e16006130"; then
@@ -46,6 +52,5 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s Adwaita
   xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
   xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
-  apm install atom-material-ui atom-material-syntax-light
-  sed -i -e "s/northem-dark-atom-ui/atom-material-ui/g" -e "s/atom-monokai/atom-material-syntax-light/g" "$HOME/.atom/config.cson"
+  install_atom_theme atom-material-ui atom-material-syntax-light
 fi
