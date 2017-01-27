@@ -156,7 +156,6 @@ function install_atom_packages {
 
 	#config files
 	cp ../config.cson ../data-atom-connections.cson home_copy/.atom/
-	patch home_copy/.atom/packages/linter-gcc/lib/main.js ../linter-gcc-french.patch
 }
 
 function install_shellcheck {
