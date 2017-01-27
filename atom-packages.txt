@@ -16,6 +16,7 @@ highlight-selected
 jumpy
 language-cmake
 language-pgsql
+language-x86-64-assembly
 linter
 linter-csslint
 linter-gcc
