@@ -9,6 +9,7 @@ function wallpaper_ilovebash {
 }
 
 function copy_ssh {
+  #ssh-keyscan github.com >> ~/.ssh/known_hosts
   mkdir ~/.ssh
   cp ~/net-home/ssh/* ~/.ssh/
   chmod 400 ~/.ssh/id_rsa*
@@ -28,7 +29,6 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global user.email "alex.dejaegher@gmail.com"
   git config --global push.default simple
   copy_ssh
-  #ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
 fi
@@ -36,12 +36,9 @@ fi
 if echo "$USER" | grep -q "e16006130"; then
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
-  #ssh-keyscan github.com >> ~/.ssh/known_hosts
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
+  git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
-
-  wget -O ~/Bureau/KDevelop.AppImage http://download.kde.org/stable/kdevelop/5.0.3/bin/linux/KDevelop-5.0.3-x86_64.AppImage
-  chmod +x ~/Bureau/KDevelop.AppImage
 fi
 
 if echo "$USER" | grep -q "d16002496"; then
