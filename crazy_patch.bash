@@ -8,6 +8,12 @@ function wallpaper_ilovebash {
   xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/i-love-bash/ILoveBash_1920x1200.png"
 }
 
+function install_cursor_batman {
+  curl -so "$HOME/.cache/the_dark_side/cursor_batman.tar.bz2" "http://orig10.deviantart.net/0fdb/f/2012/200/c/8/batman_the_dark_knight_rises_by_grynays-d57sdfx.tar.bz2"
+  tar xf "$HOME/.cache/the_dark_side/cursor_batman.tar.bz2" -C "$HOME/.icons/"
+  xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s BatmanTheDarkKnightRises
+}
+
 function copy_ssh {
   #ssh-keyscan github.com >> ~/.ssh/known_hosts
   mkdir ~/.ssh
@@ -31,6 +37,7 @@ if echo "$USER" | grep -q "d16007062"; then
   copy_ssh
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
+  install_cursor_batman
 fi
 
 if echo "$USER" | grep -q "e16006130"; then
