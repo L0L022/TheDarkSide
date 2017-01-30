@@ -58,6 +58,8 @@ cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
 make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
 make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref"
+make_desktop_website "Github" "https://github.com/" "github"
+make_desktop_website "Architecture" "http://jeanfrederic.gosio.free.fr" "architecture"
 chmod u+x "$DESKTOP"/*
 xfdesktop --arrange
 
