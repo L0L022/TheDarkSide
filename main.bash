@@ -60,6 +60,7 @@ make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://e
 make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref"
 make_desktop_website "Github" "https://github.com/" "github"
 make_desktop_website "Architecture" "http://jeanfrederic.gosio.free.fr" "architecture"
+make_desktop_website "Mon cours c++" "https://github.com/L0L022/cours_cpp" "moncourscpp"
 chmod u+x "$DESKTOP"/*
 xfdesktop --arrange
 
