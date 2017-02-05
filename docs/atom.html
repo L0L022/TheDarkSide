@@ -30,9 +30,9 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a></li>
+          <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a></li>
           <li><a href="bureau.html"><i class="fa fa-desktop" aria-hidden="true"></i> Bureau</a></li>
-          <li class="dropdown">
+          <li class="dropdown active">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-code" aria-hidden="true"></i> Atom<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="atom.html#quoi">C’est quoi ?</a></li>
@@ -69,24 +69,27 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <h2>Présentation</h2>
+        <h2 id="quoi">C’est quoi ?</h2>
         <p>
-          The Dark Side est un mini projet qui a pour but de faciliter l’utilisation de l’environnement Linux installé sur les pc de l’IUT d’Arles.<br/> Son principe est simple : une fois connecté à votre session il suffit de lancer le script the_dark_side.bash.
-          Il va d’abord télécharger un fichier qui contient le nécessaire. Ensuite il l’extrait et installe les logiciels pour travailler. Enfin il reconfigure l’environnement de travail.<br/> Lorsqu’une mise à jour sera disponible une boite de dialogue
-          vous demandera si vous voulez l’installer.<br/> Il est possible de modifier le comportement de The Dark Side pour qu’il puisse correspondre au mieux à vos attentes.
+          Atom est un éditeur de texte multi-plateforme développé par Gihub. Son plus grand atout est qu’il est hautement configurable et personnalisable grâce à un puissant système de paquets (extensions). Atom n’est donc pas livré seul, une multitude de paquets
+          s’y ajoute pour rendre son utilisation plus confortable et productive.
         </p>
-        <h2>Installation</h2>
+        <h2 id="comment">Comment on l’utilise ?</h2>
         <p>
-          The Dark Side doit être installé sur chaque nouveau pc via le script the_dark_side.bash. C’est pourquoi il est recommandé de mettre le script dans le net_home afin d’y accéder plus facilement.
+          Un raccourci Atom est normalement disponible sur le bureau. Son démarrage est un peu long. Pour ouvrir un fichier ou un dossier ça se passe dans le menu : File → Open File ou Open Folder ou encore Add Project Folder (mon préféré). Pour configurer Atom,
+          que ce soit son comportement, son thème ou un paquet : Edit → Preferences. Pour ouvrir le manuel en ligne : Help → Documentation. Toutes les actions liées aux paquets sont dans le menu : Packages.
         </p>
-        <h4>En une seule commande</h4>
-        <p>Dans un terminal lancez :</p>
-        <pre><code>curl -sL -o ~/net_home/the_dark_side.bash "https://raw.githubusercontent.com/L0L022/config_iut/master/the_dark_side.bash" && chmod u+x ~/net_home/the_dark_side.bash && bash ~/net_home/the_dark_side.bash</code></pre>
-        <h4>À la main</h4>
+        <h2 id="paquet">Les paquets</h2>
         <p>
-          Le lien vers le script à télécharger : <a href="https://raw.githubusercontent.com/L0L022/config_iut/master/the_dark_side.bash" download>the_dark_side.bash</a><br/> Il faut le rendre exécutable en faisant clique droit → Propriétés → Permissions
-          → Autoriser ce fichier à être exécuté comme un programme
+          Si dessous la liste des paquets pré-installés, classés par catégorie/matière.
         </p>
+        <h3 id="apparence">Apparence</h3>
+        <h3 id="edition">Édition</h3>
+        <h3 id="git">Git</h3>
+        <h3 id="bdd">BDD</h3>
+        <h3 id="c++">C++</h3>
+        <h3 id="systeme">Système</h3>
+        <h3 id="web">Web</h3>
       </div>
     </div>
   </div>
