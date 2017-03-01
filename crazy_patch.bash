@@ -40,7 +40,7 @@ if echo "$USER" | grep -q "d16007062"; then
   copy_ssh
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
-  install_cursor_batman
+  #install_cursor_batman
 fi
 
 if echo "$USER" | grep -q "e16006130"; then
