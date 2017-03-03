@@ -59,3 +59,7 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
   install_atom_theme atom-material-ui atom-material-syntax-light
 fi
+
+if echo "$USER" | grep -q "s16001821"; then
+  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+fi
