@@ -44,23 +44,34 @@ xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
 xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
 
 function make_desktop_website {
+  name="$1"
+  url="$2"
+  file_name="$3"
+  icon="$4"
+  if [ -z "$icon" ]; then
+    icon="emblem-web"
+  fi
   echo "[Desktop Entry]
 Encoding=UTF-8
-Name=$1
+Name=$name
 Type=Link
-URL=$2
-Icon=emblem-web" > "$DESKTOP/$3.desktop"
+URL=$url
+Icon=$icon" > "$DESKTOP/$file_name.desktop"
 }
 
 cp /usr/share/applications/{firefox-esr,exo-terminal-emulator,scilab,blender,chromium,kde4/kcalc,libreoffice-startcenter}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
 cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
-make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side"
+make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side" "system-help"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
-make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref"
-make_desktop_website "Github" "https://github.com/" "github"
+make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
+make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref" "text-x-cpp"
+make_desktop_website "Github" "https://github.com/" "github" "web-github"
+make_desktop_website "Git guide" "https://rogerdudler.github.io/git-guide/index.fr.html" "gitguide" "gitg"
+make_desktop_website "GMail" "https://mail.google.com/" "gmail" "web-google-gmail"
+make_desktop_website "GDrive" "https://drive.google.com/" "gdrive" "web-google-drive"
+make_desktop_website "Spotify Web" "https://play.spotify.com/" "spotify" "web-spotify"
 make_desktop_website "Architecture" "http://jeanfrederic.gosio.free.fr" "architecture"
-make_desktop_website "Git guide" "https://rogerdudler.github.io/git-guide/index.fr.html" "gitguide"
 chmod u+x "$DESKTOP"/*
 xfdesktop --arrange
 
