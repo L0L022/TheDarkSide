@@ -17,6 +17,16 @@ function install_cursor_batman {
   xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s BatmanTheDarkKnightRises
 }
 
+function add_english_discord {
+  DESKTOP="$(xdg-user-dir DESKTOP)"
+  echo "[Desktop Entry]
+Encoding=UTF-8
+Name=Anglais Discord
+Type=Link
+URL=https://discord.gg/dvbhh6w
+Icon=discord" > "$DESKTOP/an_discord.desktop"
+}
+
 function copy_ssh {
   #ssh-keyscan github.com >> ~/.ssh/known_hosts
   mkdir ~/.ssh
@@ -29,6 +39,7 @@ function install_atom_theme {
   sed -i -e "s/northem-dark-atom-ui/$1/g" -e "s/atom-monokai/$2/g" "$HOME/.atom/config.cson"
 }
 
+#alex
 if echo "$USER" | grep -q "d16007062"; then
   rm /home/d16007062/Bureau/{chromium,blender}.desktop
   xfdesktop --arrange
@@ -41,16 +52,20 @@ if echo "$USER" | grep -q "d16007062"; then
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
   #install_cursor_batman
+  add_english_discord
 fi
 
+#loic e
 if echo "$USER" | grep -q "e16006130"; then
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+  add_english_discord
 fi
 
+#hugo
 if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 1
   xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 1
@@ -58,8 +73,30 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
   xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
   install_atom_theme atom-material-ui atom-material-syntax-light
+  add_english_discord
 fi
 
+#leo
 if echo "$USER" | grep -q "s16001821"; then
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+fi
+
+#loic l
+if echo "$USER" | grep -q "l16002580"; then
+  add_english_discord
+fi
+
+#martin
+if echo "$USER" | grep -q "a16000520"; then
+  add_english_discord
+fi
+
+#laurent
+if echo "$USER" | grep -q "d16013526"; then
+  add_english_discord
+fi
+
+#killian
+if echo "$USER" | grep -q "w16003485"; then
+  add_english_discord
 fi
