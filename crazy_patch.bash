@@ -40,7 +40,7 @@ if echo "$USER" | grep -q "d16007062"; then
   copy_ssh
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
-  install_cursor_batman
+  #install_cursor_batman
 fi
 
 if echo "$USER" | grep -q "e16006130"; then
@@ -58,4 +58,8 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
   xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
   install_atom_theme atom-material-ui atom-material-syntax-light
+fi
+
+if echo "$USER" | grep -q "s16001821"; then
+  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
 fi
