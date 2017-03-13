@@ -79,6 +79,7 @@ fi
 #leo
 if echo "$USER" | grep -q "s16001821"; then
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+  git clone https://github.com/LinkIsACake/IUT.git "$HOME/Bureau/IUT"
 fi
 
 #loic l
