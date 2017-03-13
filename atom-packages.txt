@@ -8,6 +8,7 @@ busy
 color-picker
 data-atom
 file-icons
+flex-tool-bar
 git-plus
 highlight-selected
 language-cmake
@@ -32,6 +33,7 @@ minimap-selection
 minimap-split-diff
 northem-dark-atom-ui
 open-recent
+open-terminal-here
 pigments
 random
 scilab-language
@@ -40,5 +42,6 @@ simple-drag-drop-text
 split-diff
 switch-header-source
 synced-sidebar
+tool-bar
 tree-view-autoresize
 tree-view-git-status

@@ -143,7 +143,7 @@ function install_atom_packages {
 	home_copy/.cache/the_dark_side/atom/resources/app/apm/bin/apm install --packages-file ../atom-packages.txt
 
 	#config files
-	cp ../config.cson ../data-atom-connections.cson home_copy/.atom/
+	cp ../config.cson ../data-atom-connections.cson ../toolbar.cson home_copy/.atom/
 }
 
 function install_shellcheck {

@@ -1,0 +1,97 @@
+[
+  {
+    type: "button"
+    icon: "file"
+    callback: "application:new-file"
+    tooltip: "Nouveau fichier"
+  }
+  {
+    type: "button"
+    icon: "file-directory"
+    callback: "application:add-project-folder"
+    tooltip: "Ouvrir un dossier"
+  }
+  {
+    type: "button"
+    icon: "terminal"
+    callback: "open-terminal-here:open"
+    tooltip: "Ouvre un terminal"
+  }
+  {
+    type: "spacer"
+  }
+  {
+    type: "button"
+    icon: "mark-github"
+    callback: "git-plus:menu"
+    tooltip: "Git Menu"
+  }
+  {
+    type: "button"
+    icon: "repo-pull"
+    callback: "git-plus:pull"
+    tooltip: "Pull"
+  }
+  {
+    type: "button"
+    icon: "plus-small"
+    callback: "git-plus:add-and-commit"
+    tooltip: "Add and Commit"
+  }
+  {
+    type: "button"
+    icon: "plus"
+    callback: "git-plus:add-all-and-commit"
+    tooltip: "Add All and Commit"
+  }
+  {
+    type: "button"
+    icon: "repo-push"
+    callback: "git-plus:push"
+    tooltip: "Push"
+  }
+  {
+    type: "spacer"
+    show: {
+      pattern: 'CMakeLists.txt'
+      options: {
+        maxDepth: 2
+      }
+    }
+  }
+  {
+    type: "button"
+    icon: "pin"
+    callback: "build:select-active-target"
+    tooltip: "Sélectionne la cible"
+    show: {
+      pattern: 'CMakeLists.txt'
+      options: {
+        maxDepth: 2
+      }
+    }
+  }
+  {
+    type: "button"
+    icon: "gear"
+    callback: "build:trigger"
+    tooltip: "Construit/Compile la cible"
+    show: {
+      pattern: 'CMakeLists.txt'
+      options: {
+        maxDepth: 2
+      }
+    }
+  }
+  {
+    type: "spacer"
+    show: "SQL"
+  }
+  {
+    type: "button"
+    icon: "database"
+    callback: "data-atom:execute"
+    tooltip: "BDD"
+    show: "SQL"
+  }
+]

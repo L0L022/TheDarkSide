@@ -24,5 +24,9 @@
   "linter-stylelint":
     disableWhenNoConfig: false
     useStandard: true
+  "open-terminal-here":
+    command: "exo-open --launch TerminalEmulator"
+  "tool-bar":
+    position: "Left"
   welcome:
     showOnStartup: false
