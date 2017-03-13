@@ -7,5 +7,6 @@ if [ -z "$last_release" ]; then
 fi
 
 echo "$last_release"
+mkdir -p "$HOME/.cache/"
 curl -so "$HOME/.cache/start.bash" https://raw.githubusercontent.com/L0L022/config_iut/"$last_release"/start.bash
 bash "$HOME/.cache/start.bash"
