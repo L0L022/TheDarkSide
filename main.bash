@@ -25,9 +25,10 @@ xfconf-query -n -c keyboards -p /Default/Numlock -t bool -s true
 
 xfconf-query -r -R -c xfce4-panel -p /
 XFCE_PANEL_MIGRATE_DEFAULT="" /usr/lib/x86_64-linux-gnu/xfce4/panel/migrate
+xfconf-query -r -R -c xfce4-panel -p /panels/panel-2
+xfconf-query -c xfce4-panel -p /panels  -n -a -t int -s 1
 xfce4-panel -r &
 xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 2
-xfconf-query -n -c xfce4-panel -p /panels/panel-2/autohide -t bool -s true
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/show-button-title -t bool -s false
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/button-icon -t string -s debian-logo
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
@@ -42,6 +43,8 @@ xfconf-query -n -c xfce4-session -p /general/SaveOnExit -t bool -s false
 
 xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
 xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
+
+xfce4-panel --add=mixer
 
 function make_desktop_website {
   name="$1"
