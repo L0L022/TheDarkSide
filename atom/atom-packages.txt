@@ -5,6 +5,7 @@ build
 build-cmake
 build-make
 busy
+busy-signal
 color-picker
 data-atom
 file-icons
@@ -20,6 +21,7 @@ linter-gcc
 linter-htmlhint
 linter-shellcheck
 linter-stylelint
+linter-ui-default
 merge-conflicts
 minimap
 minimap-bookmarks
