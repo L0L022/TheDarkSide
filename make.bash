@@ -156,6 +156,17 @@ function install_shellcheck {
 	cd ..
 }
 
+function install_tree {
+	mkdir tree
+	cd tree || exit
+	wget -c -O tree.deb "http://ftp.fr.debian.org/debian/pool/main/t/tree/tree_1.6.0-1_amd64.deb"
+	ar x tree.deb data.tar.gz
+	tar xf data.tar.gz
+	mv usr/bin/tree ../home_copy/.cache/the_dark_side/
+	chmod u+x ../home_copy/.cache/the_dark_side/tree
+	cd ..
+}
+
 function install_dconf {
 	mkdir dconf
 	cd dconf || exit
@@ -200,6 +211,7 @@ function install_software {
 	install_atom
 	install_atom_packages
 	install_shellcheck
+	install_tree
 	install_dconf
 	install_terminix
 	install_tmux
