@@ -61,7 +61,7 @@ function install_package {
   if [ "$use_gui" = true ]; then
     install_pv
     echo "extract"
-    ("$pv_exec" -nC "$package_location" | tar xJf - -C "$HOME")# 2>&1 | sed -u "s|\(.*\)|\1-1|g" | bc -l
+    ("$pv_exec" -nC "$package_location" | tar xJf - -C "$HOME") 2>&1
   else
     echo "extract"
     tar xf "$package_location" -C "$HOME"
@@ -84,7 +84,7 @@ function install {
         if [ -f "$package_location" ]; then
           rm "$package_location"
         fi
-        curl -L -o "$package_location" "https://github.com/L0L022/$repo_name/releases/download/$package_latest_version/$package_name"# | sed -u "s|^ *\([0-9][0-9]*\).*\( [0-9].*$\)|\1-1\n\2|g" | bc -l | sed -u ""
+        curl -L -o "$package_location" "https://github.com/L0L022/$repo_name/releases/download/$package_latest_version/$package_name"
         chmod 666 "$package_location"
         echo "$package_latest_version" > "$package_version_location"
         chmod 666 "$package_version_location"
@@ -110,16 +110,14 @@ if zenity --version >/dev/null 2>&1; then
     -e "s|^install pv$|[4\/5]($package_installed_version -> $package_latest_version) Installation de pv|g" \
     -e "s|^extract$|0\n#[4\/5]($package_installed_version -> $package_latest_version) Mise en place des fichiers|g" \
     -e "s|^install$|0\n#[5\/5]($package_installed_version -> $package_latest_version) Installation|g" \
-    -e "s|^ *\([0-9][0-9]*\).*\( [0-9].*$\)|\1\n#[2\/5]($package_installed_version -> $package_latest_version) Téléchargement \2\/s|g" \
-    -e "s|^100$|99|g"
+    -e "s|^ *\([0-9][0-9]*\).*\( [0-9].*$\)|\1\n#[2\/5]($package_installed_version -> $package_latest_version) Téléchargement \2\/s|g"
     echo -e "0\n#[0\/2]($package_installed_version -> $package_latest_version) Mise à jour"
     update | sed -u \
     -e "s|^install crazy_patch.bash$|0\n#[1\/3] Installation du crazy_patch|g" \
     -e "s|^update atom packages$|0\n#[2\/3] Mise à jour des paquets atom (peut être long)|g" \
-    -e "s|^update bash-it$|0\n#[3\/3] Mise à jour de bash-it|g" \
-    -e "s|^100$|99|g"
+    -e "s|^update bash-it$|0\n#[3\/3] Mise à jour de bash-it|g"
     echo -e "100\n#Installation terminée ($package_latest_version)"
-  ) | zenity --progress --no-cancel --title "The Dark Side" --auto-close --width 600
+  ) | sed -u "s|^100$|99|g" | zenity --progress --no-cancel --title "The Dark Side" --auto-close --width 600
 else
   set_variables
   install
