@@ -132,7 +132,7 @@ function install_atom {
 	mv atom-*/* home_copy/.cache/the_dark_side/atom
 
 	cp home_copy/.cache/the_dark_side/atom/atom.png home_copy/.local/share/icons/
-	cp ../atom.desktop home_copy/.local/share/applications/
+	cp ../atom/atom.desktop home_copy/.local/share/applications/
 	chmod u+x home_copy/.local/share/applications/
 }
 
@@ -140,10 +140,10 @@ function install_atom_packages {
 	mkdir home_copy/.atom/
 	ATOM_HOME="$(realpath home_copy/.atom/)"
 	export ATOM_HOME
-	home_copy/.cache/the_dark_side/atom/resources/app/apm/bin/apm install --packages-file ../atom-packages.txt
+	home_copy/.cache/the_dark_side/atom/resources/app/apm/bin/apm install --packages-file ../atom/atom-packages.txt
 
 	#config files
-	cp ../config.cson ../data-atom-connections.cson ../toolbar.cson home_copy/.atom/
+	cp ../atom/config.cson ../atom/data-atom-connections.cson ../atom/toolbar.cson home_copy/.atom/
 }
 
 function install_shellcheck {
@@ -170,11 +170,11 @@ function install_dconf {
 function install_terminix {
 	wget -c -O Terminix.AppImage "https://bintray.com/probono/AppImages/download_file?file_path=Terminix-1.30-x86_64.AppImage"
 	mv Terminix.AppImage home_copy/.cache/the_dark_side/
-	cp ../terminix.bash home_copy/.cache/the_dark_side/
+	cp ../other/terminix.bash home_copy/.cache/the_dark_side/
 	chmod u+x home_copy/.cache/the_dark_side/{Terminix.AppImage,terminix.bash}
 	mkdir -p home_copy/.local/share/xfce4/helpers
-	cp ../com.gexperts.Terminix.desktop home_copy/.local/share/applications/
-	cp ../custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
+	cp ../desktop/com.gexperts.Terminix.desktop home_copy/.local/share/applications/
+	cp ../desktop/custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
 	mkdir -p home_copy/.local/share/appimagekit
 	touch home_copy/.local/share/appimagekit/no_desktopintegration
 }
@@ -206,7 +206,7 @@ function install_software {
 	install_bash_it
 }
 
-cp ../bashrc home_copy/.bashrc
+cp ../other/bashrc home_copy/.bashrc
 mkdir -p home_copy/.cache/the_dark_side/
 
 install_font &> log/font
@@ -215,8 +215,8 @@ install_icon_theme &> log/icon_theme
 install_software &> log/software
 
 mkdir -p home_copy/.config/autostart
-cp ../the_dark_side_check_version.desktop ../the_dark_side_update.desktop home_copy/.config/autostart/
+cp ../autostart/the_dark_side_check_version.desktop ../autostart/the_dark_side_update.desktop home_copy/.config/autostart/
 
-cp ../main.bash ../check_version.bash ../update.bash ../the_dark_side.bash ../wallpaper_cli.png home_copy/.cache/the_dark_side/
+cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/wallpaper_cli.png home_copy/.cache/the_dark_side/
 tar -cJf home_package.tar.xz -C home_copy .
 mv home_package.tar.xz ../
