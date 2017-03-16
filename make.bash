@@ -144,6 +144,8 @@ function install_atom_packages {
 
 	#config files
 	cp ../atom/config.cson ../atom/data-atom-connections.cson ../atom/toolbar.cson home_copy/.atom/
+
+	patch home_copy/.atom/packages/flex-tool-bar/node_modules/tree-match-sync/index.js ../atom/tree-match-sync.patch
 }
 
 function install_shellcheck {
