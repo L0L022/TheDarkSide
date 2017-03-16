@@ -1,8 +1,4 @@
 #!/bin/bash
-#mettre des trucs débiles
-
-rm "$HOME/Bureau/moncourscpp.desktop"
-xfdesktop --arrange
 
 function wallpaper_ilovebash {
   curl -so "$HOME/.cache/the_dark_side/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
@@ -24,7 +20,7 @@ Encoding=UTF-8
 Name=Anglais Discord
 Type=Link
 URL=https://discord.gg/dvbhh6w
-Icon=discord" > "$DESKTOP/an_discord.desktop"
+Icon=hipchat" > "$DESKTOP/an_discord.desktop"
 }
 
 function copy_ssh {
