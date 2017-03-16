@@ -35,7 +35,7 @@ xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
 
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -t bool -s false
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-trash -t bool -s false
-xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/wallpaper_cli.png"
+xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/linux_tux_by_linux4sa.jpg"
 
 xfconf-query -n -c xfce4-keyboard-shortcuts -p '/commands/custom/Super_L' -t string -s "$HOME/.cache/the_dark_side/terminix.bash -q"
 
