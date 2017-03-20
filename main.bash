@@ -20,6 +20,8 @@ xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_frame_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_popup_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 2
+xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s false
+xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
 
 xfconf-query -n -c keyboards -p /Default/Numlock -t bool -s true
 
@@ -104,10 +106,15 @@ if g++ --version | grep -q "This is free software"; then
   sed -i -e "/erreur/d" -e "/attention/d" "$HOME/.atom/config.cson"
 fi
 
-gsettings set org.gtk.Settings.FileChooser startup-mode cwd
-mkdir -p "$HOME/.config/gtk-2.0/"
-echo "[Filechooser Settings]" > "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
-echo "StartupMode=cwd" >> "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
+# pour le moment ça fait pas ce que je veux
+# gsettings set org.gtk.Settings.FileChooser startup-mode cwd
+# mkdir -p "$HOME/.config/gtk-2.0/"
+# echo "[Filechooser Settings]" > "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
+# echo "StartupMode=cwd" >> "$HOME/.config/gtk-2.0/gtkfilechooser.ini"
+
+echo -e "file://$(xdg-user-dir DOWNLOAD)\nfile:///commun/commun-info1\nfile:///rendu/rendu-info1" > "$HOME/.gtk-bookmarks"
+mkdir -p "$HOME/.config/gtk-3.0/"
+cat "$HOME/.gtk-bookmarks" > "$HOME/.config/gtk-3.0/bookmarks"
 
 mkdir -p "$HOME/.config/xfce4/terminal/"
 echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n" > "$HOME/.config/xfce4/terminal/terminalrc"
