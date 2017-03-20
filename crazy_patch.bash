@@ -1,5 +1,29 @@
 #!/bin/bash
 
+function install_qt {
+  desktop_file="[Desktop Entry]
+Type=Application
+Exec=/var/tmp/Qt/Tools/QtCreator/bin/qtcreator
+Name=Qt Creator (Community)
+GenericName=The IDE of choice for Qt development.
+Icon=QtProject-qtcreator
+Terminal=false
+Categories=Development;IDE;Qt;
+MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;application/vnd.qt.qmakeprofile;application/vnd.qt.xml.resource;text/x-qml;text/x-qt.qml;text/x-qt.qbs"
+  if [ -f /var/tmp/Qt/MaintenanceTool ]; then
+    echo "$desktop_file" > "$HOME/Bureau/qtcreator.desktop"
+    chmod u+x "$HOME/Bureau/qtcreator.desktop"
+  else
+    if zenity --question --title="Qt 5.8.0" --text="Voulez vous installer la dernière version de Qt ?"; then
+      curl -sL -o /tmp/qt-installer.run "http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
+      chmod u+x /tmp/qt-installer.run
+      /tmp/qt-installer TargetDir=/var/tmp/Qt
+      echo "$desktop_file" > "$HOME/Bureau/qtcreator.desktop"
+      chmod u+x "$HOME/Bureau/qtcreator.desktop"
+    fi
+  fi
+}
+
 function wallpaper_ilovebash {
   curl -so "$HOME/.cache/the_dark_side/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
   unzip -o "$HOME/.cache/the_dark_side/i-love-bash.zip" -d "$HOME/.cache/the_dark_side/"
@@ -60,6 +84,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   add_english_things
+  install_qt
 fi
 
 #hugo
