@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#a deplacer !!!!
-xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s false
-xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
-
 function wallpaper_ilovebash {
   curl -so "$HOME/.cache/the_dark_side/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
   unzip -o "$HOME/.cache/the_dark_side/i-love-bash.zip" -d "$HOME/.cache/the_dark_side/"
@@ -17,7 +13,7 @@ function install_cursor_batman {
   xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s BatmanTheDarkKnightRises
 }
 
-function add_english_discord {
+function add_english_things {
   DESKTOP="$(xdg-user-dir DESKTOP)"
   echo "[Desktop Entry]
 Encoding=UTF-8
@@ -25,6 +21,7 @@ Name=Anglais Discord
 Type=Link
 URL=https://discord.gg/dvbhh6w
 Icon=hipchat" > "$DESKTOP/an_discord.desktop"
+  git clone https://github.com/L0L022/projet7.git "$HOME/Bureau/projet7"
 }
 
 function copy_ssh {
@@ -52,7 +49,7 @@ if echo "$USER" | grep -q "d16007062"; then
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   install_atom_theme seti-ui seti-syntax
   #install_cursor_batman
-  add_english_discord
+  add_english_things
 fi
 
 #loic e
@@ -63,7 +60,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
-  add_english_discord
+  add_english_things
 fi
 
 #hugo
@@ -74,7 +71,7 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
   xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
   install_atom_theme atom-material-ui atom-material-syntax-light
-  add_english_discord
+  add_english_things
 fi
 
 #leo
@@ -85,20 +82,20 @@ fi
 
 #loic l
 if echo "$USER" | grep -q "l16002580"; then
-  add_english_discord
+  add_english_things
 fi
 
 #martin
 if echo "$USER" | grep -q "a16000520"; then
-  add_english_discord
+  add_english_things
 fi
 
 #laurent
 if echo "$USER" | grep -q "d16013526"; then
-  add_english_discord
+  add_english_things
 fi
 
 #killian
 if echo "$USER" | grep -q "w16003485"; then
-  add_english_discord
+  add_english_things
 fi
