@@ -21,7 +21,7 @@ Name=Anglais Discord
 Type=Link
 URL=https://discord.gg/dvbhh6w
 Icon=hipchat" > "$DESKTOP/an_discord.desktop"
-  git clone https://github.com/L0L022/projet7.git "$HOME/Bureau/projet7"
+  git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
 }
 
 function copy_ssh {
