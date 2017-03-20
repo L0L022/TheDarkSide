@@ -58,6 +58,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+  git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
   add_english_discord
 fi
 
