@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#a deplacer !!!!
+xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s false
+xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
+
 function wallpaper_ilovebash {
   curl -so "$HOME/.cache/the_dark_side/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
   unzip -o "$HOME/.cache/the_dark_side/i-love-bash.zip" -d "$HOME/.cache/the_dark_side/"
