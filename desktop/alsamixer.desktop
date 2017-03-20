@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Volume
+Comment=Modifier le volume
+Exec=xfce4-terminal -e /usr/bin/alsamixer
+Terminal=false
+Type=Application
+Categories=System;
+Icon=multimedia-volume-control

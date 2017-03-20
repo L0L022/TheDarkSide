@@ -46,8 +46,6 @@ xfconf-query -n -c xfce4-session -p /general/SaveOnExit -t bool -s false
 xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
 xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
 
-xfce4-panel --add=mixer
-
 function make_desktop_website {
   name="$1"
   url="$2"
@@ -67,6 +65,7 @@ Icon=$icon" > "$DESKTOP/$file_name.desktop"
 cp /usr/share/applications/{firefox-esr,exo-terminal-emulator,scilab,blender,chromium,kde4/kcalc,libreoffice-startcenter}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
 cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
+cp "$HOME/.cache/the_dark_side/alsamixer.desktop" "$DESKTOP"
 make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side" "system-help"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
 make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
