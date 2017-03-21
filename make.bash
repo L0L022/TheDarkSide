@@ -234,6 +234,7 @@ chmod u+x home_copy/.local/share/applications/*
 mkdir -p home_copy/.config/autostart
 cp ../autostart/the_dark_side_check_version.desktop ../autostart/the_dark_side_update.desktop home_copy/.config/autostart/
 
-cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/wallpaper_cli.png ../desktop/linux_tux_by_linux4sa.jpg ../desktop/volume.bash home_copy/.cache/the_dark_side/
+cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/linux_tux_by_linux4sa.jpg ../desktop/volume.bash home_copy/.cache/the_dark_side/
+chmod u+x home_copy/.cache/the_dark_side/{main,check_version,update,the_dark_side,volume}.bash
 tar -cJf home_package.tar.xz -C home_copy .
 mv home_package.tar.xz ../

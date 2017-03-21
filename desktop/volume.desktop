@@ -6,4 +6,4 @@ Exec=~/.cache/the_dark_side/volume.bash
 Terminal=false
 Type=Application
 Categories=System;
-Icon=multimedia-volume-control
+Icon=audio-card

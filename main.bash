@@ -40,6 +40,7 @@ make_raccourci 21
 make_raccourci 22
 make_raccourci 23
 make_raccourci 24
+make_raccourci 25
 
 function load_icon {
   sleep 5
@@ -48,9 +49,10 @@ function load_icon {
   cp /usr/share/applications/exo-terminal-emulator.desktop "$HOME/.config/xfce4/panel/launcher-22/"
   cp "$HOME/.local/share/applications/atom.desktop" "$HOME/.config/xfce4/panel/launcher-23/"
   cp "$HOME/.local/share/applications/volume.desktop" "$HOME/.config/xfce4/panel/launcher-24/"
+  cp /usr/share/applications/libreoffice-startcenter.desktop "$HOME/.config/xfce4/panel/launcher-25/"
 }
 
-xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
+xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 25 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
 
 xfce4-panel -r &
 
@@ -88,20 +90,16 @@ URL=$url
 Icon=$icon" > "$DESKTOP/$file_name.desktop"
 }
 
-cp /usr/share/applications/{firefox-esr,exo-terminal-emulator,scilab,blender,chromium,kde4/kcalc,libreoffice-startcenter}.desktop "$DESKTOP"
+cp /usr/share/applications/{scilab,blender,chromium,kde4/kcalc}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
-cp "$HOME/.local/share/applications/atom.desktop" "$DESKTOP"
-cp "$HOME/.cache/the_dark_side/alsamixer.desktop" "$DESKTOP"
 make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side" "system-help"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
 make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
 make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref" "text-x-cpp"
 make_desktop_website "Github" "https://github.com/" "github" "web-github"
 make_desktop_website "Git guide" "https://rogerdudler.github.io/git-guide/index.fr.html" "gitguide" "gitg"
-make_desktop_website "GMail" "https://mail.google.com/" "gmail" "web-google-gmail"
 make_desktop_website "GDrive" "https://drive.google.com/" "gdrive" "web-google-drive"
 make_desktop_website "Spotify Web" "https://play.spotify.com/" "spotify" "web-spotify"
-make_desktop_website "Architecture" "http://jeanfrederic.gosio.free.fr" "architecture"
 chmod u+x "$DESKTOP"/*
 xfdesktop --arrange
 
