@@ -2,7 +2,7 @@
 Version=1.0
 Name=Volume
 Comment=Modifier le volume
-Exec=xfce4-terminal -e /usr/bin/alsamixer
+Exec=~/.cache/the_dark_side/volume.bash
 Terminal=false
 Type=Application
 Categories=System;
