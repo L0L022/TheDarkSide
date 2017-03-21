@@ -29,7 +29,33 @@ xfconf-query -r -R -c xfce4-panel -p /
 XFCE_PANEL_MIGRATE_DEFAULT="" /usr/lib/x86_64-linux-gnu/xfce4/panel/migrate
 xfconf-query -r -R -c xfce4-panel -p /panels/panel-2
 xfconf-query -c xfce4-panel -p /panels  -n -a -t int -s 1
+
+function make_raccourci {
+  xfconf-query -n -c xfce4-panel -p "/plugins/plugin-$1" -t string -s launcher
+  mkdir -p "$HOME/.config/xfce4/panel/launcher-$1"
+}
+
+make_raccourci 20
+make_raccourci 21
+make_raccourci 22
+make_raccourci 23
+make_raccourci 24
+
+function load_icon {
+  sleep 5
+  cp /usr/share/applications/exo-file-manager.desktop "$HOME/.config/xfce4/panel/launcher-20/"
+  cp /usr/share/applications/firefox-esr.desktop "$HOME/.config/xfce4/panel/launcher-21/"
+  cp /usr/share/applications/exo-terminal-emulator.desktop "$HOME/.config/xfce4/panel/launcher-22/"
+  cp "$HOME/.local/share/applications/atom.desktop" "$HOME/.config/xfce4/panel/launcher-23/"
+  cp "$HOME/.local/share/applications/volume.desktop" "$HOME/.config/xfce4/panel/launcher-24/"
+}
+
+xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
+
 xfce4-panel -r &
+
+load_icon &
+
 xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 2
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/show-button-title -t bool -s false
 xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/button-icon -t string -s debian-logo

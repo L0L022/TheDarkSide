@@ -133,7 +133,6 @@ function install_atom {
 
 	cp home_copy/.cache/the_dark_side/atom/atom.png home_copy/.local/share/icons/
 	cp ../atom/atom.desktop home_copy/.local/share/applications/
-	chmod u+x home_copy/.local/share/applications/
 }
 
 function install_atom_packages {
@@ -222,15 +221,19 @@ function install_software {
 
 cp ../other/bashrc home_copy/.bashrc
 mkdir -p home_copy/.cache/the_dark_side/
+mkdir -p home_copy/.local/share/applications/
 
 install_font &> log/font
 install_theme &> log/theme
 install_icon_theme &> log/icon_theme
 install_software &> log/software
 
+cp ../desktop/volume.desktop home_copy/.local/share/applications/
+chmod u+x home_copy/.local/share/applications/*
+
 mkdir -p home_copy/.config/autostart
 cp ../autostart/the_dark_side_check_version.desktop ../autostart/the_dark_side_update.desktop home_copy/.config/autostart/
 
-cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/wallpaper_cli.png ../desktop/linux_tux_by_linux4sa.jpg ../desktop/alsamixer.desktop ../desktop/volume.bash home_copy/.cache/the_dark_side/
+cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/wallpaper_cli.png ../desktop/linux_tux_by_linux4sa.jpg ../desktop/volume.bash home_copy/.cache/the_dark_side/
 tar -cJf home_package.tar.xz -C home_copy .
 mv home_package.tar.xz ../
