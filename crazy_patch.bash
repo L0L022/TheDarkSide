@@ -62,6 +62,7 @@ function install_atom_theme {
 
 #alex
 if echo "$USER" | grep -q "d16007062"; then
+  xset m 3/2 3
   rm /home/d16007062/Bureau/{chromium,blender,web-spotify}.desktop
   xfdesktop --arrange
   xdg-mime default firefox-esr.desktop text/html
