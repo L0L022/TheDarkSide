@@ -17,7 +17,7 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
     if zenity --question --title="Qt 5.8.0" --text="Voulez vous installer la dernière version de Qt ?"; then
       curl -sL -o /tmp/qt-installer.run "http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
       chmod u+x /tmp/qt-installer.run
-      /tmp/qt-installer TargetDir=/var/tmp/Qt
+      /tmp/qt-installer.run TargetDir=/var/tmp/Qt
       echo "$desktop_file" > "$HOME/Bureau/qtcreator.desktop"
       chmod u+x "$HOME/Bureau/qtcreator.desktop"
     fi
@@ -83,8 +83,9 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+  git clone git@github.com:L0L022/config_iut.git "$HOME/Bureau/config_iut"
   add_english_things
-  install_qt
+  install_qt &
 fi
 
 #hugo
