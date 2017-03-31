@@ -45,6 +45,7 @@ Name=Anglais Discord
 Type=Link
 URL=https://discord.gg/dvbhh6w
 Icon=hipchat" > "$DESKTOP/an_discord.desktop"
+  chmod u+x "$DESKTOP/an_discord.desktop"
   git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
 }
 
@@ -63,7 +64,7 @@ function install_atom_theme {
 #alex
 if echo "$USER" | grep -q "d16007062"; then
   xset m 3/2 3
-  rm /home/d16007062/Bureau/{chromium,blender,web-spotify}.desktop
+  rm "$HOME/Bureau/"{chromium,blender,spotify}.desktop
   xfdesktop --arrange
   xdg-mime default firefox-esr.desktop text/html
   cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
@@ -72,13 +73,15 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global push.default simple
   copy_ssh
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
-  install_atom_theme seti-ui seti-syntax
+  install_atom_theme atom-dark-minimal-ui seti-syntax
+  sed -i "s|^\"\*\":$|\"*\":\n  \"atom-dark-minimal-ui\":\n      colors:\n        customColor: \"#850404\"|g" "$HOME/.atom/config.cson"
   #install_cursor_batman
   add_english_things
 fi
 
 #loic e
 if echo "$USER" | grep -q "e16006130"; then
+  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
