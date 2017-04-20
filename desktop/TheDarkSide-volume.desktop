@@ -2,7 +2,7 @@
 Version=1.0
 Name=Volume
 Comment=Modifier le volume
-Exec=~/.cache/the_dark_side/volume.bash
+Exec=~/.cache/TheDarkSide/volume.bash
 Terminal=false
 Type=Application
 Categories=System;

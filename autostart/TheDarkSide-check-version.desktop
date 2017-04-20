@@ -2,7 +2,7 @@
 Type=Application
 Name=The Dark Side Check Version
 Comment=Tell when a new version is available
-Exec=bash ~/.cache/the_dark_side/check_version.bash
+Exec=bash ~/.cache/TheDarkSide/check-version.bash
 StartupNotify=false
 Terminal=false
 Icon=system-software-update

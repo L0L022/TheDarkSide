@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=The Dark Side Update
-Comment=Update atom packages & bash-it
-Exec=bash -i ~/.cache/the_dark_side/update.bash
+Comment=Install user-config & update atom packages & bash-it
+Exec=bash -i ~/.cache/TheDarkSide/update.bash
 StartupNotify=false
 Terminal=false
 Icon=system-software-update

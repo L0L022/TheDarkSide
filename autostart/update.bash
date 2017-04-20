@@ -1,15 +1,11 @@
 #!/bin/bash
 
-if curl -sL "https://github.com/L0L022/the_dark_side" | grep "html"; then
-  repo_name="the_dark_side"
-else
-  repo_name="config_iut"
-fi
-echo "repo_name: $repo_name"
+script="$HOME/.cache/TheDarkSide/user-config.bash"
 
-echo "install crazy_patch.bash"
-curl -sL -o "$HOME/.cache/the_dark_side/crazy_patch.bash" "https://raw.githubusercontent.com/L0L022/$repo_name/master/crazy_patch.bash"
-bash -i "$HOME/.cache/the_dark_side/crazy_patch.bash"
+echo "install user-config.bash"
+curl -sL -o "$script" "https://raw.githubusercontent.com/L0L022/TheDarkSide/master/script/user-config.bash"
+chmod u+x "$script"
+bash -i "$script"
 
 echo "update atom packages"
 apm upgrade --no-confirm
