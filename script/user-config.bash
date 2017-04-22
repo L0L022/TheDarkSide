@@ -25,15 +25,15 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
 }
 
 function wallpaper_ilovebash {
-  curl -so "$HOME/.cache/the_dark_side/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
-  unzip -o "$HOME/.cache/the_dark_side/i-love-bash.zip" -d "$HOME/.cache/the_dark_side/"
-  rm "$HOME/.cache/the_dark_side/i-love-bash.zip"
-  xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/i-love-bash/ILoveBash_1920x1200.png"
+  curl -so "$HOME/.cache/TheDarkSide/i-love-bash.zip" http://www.tux-planet.fr/public/images/wallpapers/linux/shell/i-love-bash.zip
+  unzip -o "$HOME/.cache/TheDarkSide/i-love-bash.zip" -d "$HOME/.cache/TheDarkSide/"
+  rm "$HOME/.cache/TheDarkSide/i-love-bash.zip"
+  xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/TheDarkSide/i-love-bash/ILoveBash_1920x1200.png"
 }
 
 function install_cursor_batman {
-  curl -so "$HOME/.cache/the_dark_side/cursor_batman.tar.bz2" "http://orig10.deviantart.net/0fdb/f/2012/200/c/8/batman_the_dark_knight_rises_by_grynays-d57sdfx.tar.bz2"
-  tar xf "$HOME/.cache/the_dark_side/cursor_batman.tar.bz2" -C "$HOME/.icons/"
+  curl -so "$HOME/.cache/TheDarkSide/cursor_batman.tar.bz2" "http://orig10.deviantart.net/0fdb/f/2012/200/c/8/batman_the_dark_knight_rises_by_grynays-d57sdfx.tar.bz2"
+  tar xf "$HOME/.cache/TheDarkSide/cursor_batman.tar.bz2" -C "$HOME/.icons/"
   xfconf-query -n -c xsettings -p /Gtk/CursorThemeName -t string -s BatmanTheDarkKnightRises
 }
 
@@ -87,7 +87,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
-  git clone git@github.com:L0L022/config_iut.git "$HOME/Bureau/config_iut"
+  git clone git@github.com:L0L022/TheDarkSide.git "$HOME/Bureau/TheDarkSide"
   add_english_things
   install_qt &
 fi

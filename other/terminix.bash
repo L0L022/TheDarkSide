@@ -1,3 +1,3 @@
 #!/bin/bash
 
-"$HOME"/.cache/the_dark_side/Terminix.AppImage -w "$PWD" "$@"
+"$HOME"/.cache/TheDarkSide/Terminix.AppImage -w "$PWD" "$@"

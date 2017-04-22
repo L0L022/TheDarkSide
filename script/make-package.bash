@@ -123,15 +123,15 @@ function install_icon_theme {
 }
 
 function install_atom {
-	mkdir -p home_copy/.cache/the_dark_side/atom
+	mkdir -p home_copy/.cache/TheDarkSide/atom
 	atom_version="$(git ls-remote --tags "https://github.com/atom/atom/" | sed "s|.*refs/tags/\(.*\)$|\1|g" | grep -v "beta" | sort -V | tail -n 1)"
 	if [ ! -f "atom-amd64.tar.gz" ]; then
 		wget -c "https://github.com/atom/atom/releases/download/$atom_version/atom-amd64.tar.gz"
 	fi
 	tar xf "atom-amd64.tar.gz"
-	mv atom-*/* home_copy/.cache/the_dark_side/atom
+	mv atom-*/* home_copy/.cache/TheDarkSide/atom
 
-	cp home_copy/.cache/the_dark_side/atom/atom.png home_copy/.local/share/icons/
+	cp home_copy/.cache/TheDarkSide/atom/atom.png home_copy/.local/share/icons/
 	cp ../atom/atom.desktop home_copy/.local/share/applications/
 }
 
@@ -139,7 +139,7 @@ function install_atom_packages {
 	mkdir home_copy/.atom/
 	ATOM_HOME="$(realpath home_copy/.atom/)"
 	export ATOM_HOME
-	home_copy/.cache/the_dark_side/atom/resources/app/apm/bin/apm install --packages-file ../atom/atom-packages.txt
+	home_copy/.cache/TheDarkSide/atom/resources/app/apm/bin/apm install --packages-file ../atom/atom-packages.txt
 
 	#config files
 	cp ../atom/config.cson ../atom/data-atom-connections.cson ../atom/toolbar.cson home_copy/.atom/
@@ -152,8 +152,8 @@ function install_shellcheck {
 	cd shellcheck || exit
 	wget -c -O shellcheck.tar.xz http://mir.archlinux.fr/community/os/x86_64/shellcheck-0.4.5-1-x86_64.pkg.tar.xz
 	tar xf shellcheck.tar.xz
-	mv usr/bin/shellcheck ../home_copy/.cache/the_dark_side/
-	chmod u+x ../home_copy/.cache/the_dark_side/shellcheck
+	mv usr/bin/shellcheck ../home_copy/.cache/TheDarkSide/
+	chmod u+x ../home_copy/.cache/TheDarkSide/shellcheck
 	cd ..
 }
 
@@ -163,8 +163,8 @@ function install_tree {
 	wget -c -O tree.deb "http://ftp.fr.debian.org/debian/pool/main/t/tree/tree_1.6.0-1_amd64.deb"
 	ar x tree.deb data.tar.gz
 	tar xf data.tar.gz
-	mv usr/bin/tree ../home_copy/.cache/the_dark_side/
-	chmod u+x ../home_copy/.cache/the_dark_side/tree
+	mv usr/bin/tree ../home_copy/.cache/TheDarkSide/
+	chmod u+x ../home_copy/.cache/TheDarkSide/tree
 	cd ..
 }
 
@@ -174,16 +174,16 @@ function install_dconf {
 	wget -c -O dconf.deb "http://ftp.fr.debian.org/debian/pool/main/d/d-conf/dconf-cli_0.22.0-1_amd64.deb"
 	ar x dconf.deb data.tar.xz
 	tar xf data.tar.xz
-	mv usr/bin/dconf ../home_copy/.cache/the_dark_side/
-	chmod u+x ../home_copy/.cache/the_dark_side/dconf
+	mv usr/bin/dconf ../home_copy/.cache/TheDarkSide/
+	chmod u+x ../home_copy/.cache/TheDarkSide/dconf
 	cd ..
 }
 
 function install_terminix {
 	wget -c -O Terminix.AppImage "https://bintray.com/probono/AppImages/download_file?file_path=Terminix-1.30-x86_64.AppImage"
-	mv Terminix.AppImage home_copy/.cache/the_dark_side/
-	cp ../other/terminix.bash home_copy/.cache/the_dark_side/
-	chmod u+x home_copy/.cache/the_dark_side/{Terminix.AppImage,terminix.bash}
+	mv Terminix.AppImage home_copy/.cache/TheDarkSide/
+	cp ../other/terminix.bash home_copy/.cache/TheDarkSide/
+	chmod u+x home_copy/.cache/TheDarkSide/{Terminix.AppImage,terminix.bash}
 	mkdir -p home_copy/.local/share/xfce4/helpers
 	cp ../desktop/com.gexperts.Terminix.desktop home_copy/.local/share/applications/
 	cp ../desktop/custom-TerminalEmulator.desktop home_copy/.local/share/xfce4/helpers/
@@ -197,14 +197,14 @@ function install_tmux {
 	wget -c -O tmux.deb "http://ftp.fr.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb"
 	ar x tmux.deb data.tar.xz
 	tar xf data.tar.xz
-	mv usr/bin/tmux ../home_copy/.cache/the_dark_side/
-	chmod u+x ../home_copy/.cache/the_dark_side/tmux
+	mv usr/bin/tmux ../home_copy/.cache/TheDarkSide/
+	chmod u+x ../home_copy/.cache/TheDarkSide/tmux
 	cd ..
 }
 
 function install_bash_it {
-	git clone --depth=1 https://github.com/Bash-it/bash-it.git home_copy/.cache/the_dark_side/bash_it
-	HOME="$(realpath home_copy)" bash home_copy/.cache/the_dark_side/bash_it/install.sh --silent --no-modify-config
+	git clone --depth=1 https://github.com/Bash-it/bash-it.git home_copy/.cache/TheDarkSide/bash_it
+	HOME="$(realpath home_copy)" bash home_copy/.cache/TheDarkSide/bash_it/install.sh --silent --no-modify-config
 }
 
 function install_software {
@@ -220,7 +220,7 @@ function install_software {
 }
 
 cp ../other/bashrc home_copy/.bashrc
-mkdir -p home_copy/.cache/the_dark_side/
+mkdir -p home_copy/.cache/TheDarkSide/
 mkdir -p home_copy/.local/share/applications/
 
 install_font &> log/font
@@ -232,9 +232,9 @@ cp ../desktop/volume.desktop home_copy/.local/share/applications/
 chmod u+x home_copy/.local/share/applications/*
 
 mkdir -p home_copy/.config/autostart
-cp ../autostart/the_dark_side_check_version.desktop ../autostart/the_dark_side_update.desktop home_copy/.config/autostart/
+cp ../autostart/TheDarkSide_check_version.desktop ../autostart/TheDarkSide_update.desktop home_copy/.config/autostart/
 
-cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../the_dark_side.bash ../desktop/linux_tux_by_linux4sa.jpg ../desktop/volume.bash home_copy/.cache/the_dark_side/
-chmod u+x home_copy/.cache/the_dark_side/{main,check_version,update,the_dark_side,volume}.bash
+cp ../main.bash ../autostart/check_version.bash ../autostart/update.bash ../TheDarkSide.bash ../desktop/linux_tux_by_linux4sa.jpg ../desktop/volume.bash home_copy/.cache/TheDarkSide/
+chmod u+x home_copy/.cache/TheDarkSide/{main,check_version,update,TheDarkSide,volume}.bash
 tar -cJf home_package.tar.xz -C home_copy .
 mv home_package.tar.xz ../

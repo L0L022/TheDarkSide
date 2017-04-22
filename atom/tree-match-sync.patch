@@ -5,17 +5,17 @@
  var match = require('minimatch');
  var path = require('path');
 +const os = require('os');
- 
+
  var isWindows = (process.platform === 'win32');
- 
+
 @@ -9,7 +10,7 @@
  if(isWindows){
    command = __dirname + '\\bin\\tree.exe';
  }else{
 -  command = 'tree';
-+  command = os.homedir() + '/.cache/the_dark_side/tree';
++  command = os.homedir() + '/.cache/TheDarkSide/tree';
  }
- 
+
  function escapeRegExp(str) {
 @@ -51,12 +52,6 @@
    if(isWindows){

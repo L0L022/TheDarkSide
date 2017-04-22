@@ -65,9 +65,9 @@ xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
 
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -t bool -s false
 xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-trash -t bool -s false
-xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/the_dark_side/linux_tux_by_linux4sa.jpg"
+xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/TheDarkSide/linux_tux_by_linux4sa.jpg"
 
-xfconf-query -n -c xfce4-keyboard-shortcuts -p '/commands/custom/Super_L' -t string -s "$HOME/.cache/the_dark_side/terminix.bash -q"
+xfconf-query -n -c xfce4-keyboard-shortcuts -p '/commands/custom/Super_L' -t string -s "$HOME/.cache/TheDarkSide/terminix.bash -q"
 
 xfconf-query -n -c xfce4-session -p /general/SaveOnExit -t bool -s false
 
@@ -92,7 +92,7 @@ Icon=$icon" > "$DESKTOP/$file_name.desktop"
 
 cp /usr/share/applications/{scilab,blender,chromium,kde4/kcalc}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
-make_desktop_website "The Dark Side" "https://l0l022.github.io/config_iut/" "the_dark_side" "system-help"
+make_desktop_website "The Dark Side" "https://l0l022.github.io/TheDarkSide/" "TheDarkSide" "system-help"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
 make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
 make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref" "text-x-cpp"
@@ -115,8 +115,8 @@ xdg-mime default evince.desktop application/pdf application/x-bzpdf application/
 xdg-mime default xarchiver.desktop application/x-arj application/arj application/x-bzip application/x-bzip-compressed-tar application/x-gzip application/x-rar application/x-rar-compressed application/x-tar application/x-zip application/x-zip-compressed application/zip application/x-7z-compressed application/x-compressed-tar application/x-bzip2 application/x-bzip2-compressed-tar application/x-lzma-compressed-tar application/x-lzma application/x-deb application/deb application/x-xz application/x-xz-compressed-tar
 cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
 
-sed -i "s|~|$HOME|g" "$HOME/.config/autostart/the_dark_side_check_version.desktop"
-sed -i "s|~|$HOME|g" "$HOME/.config/autostart/the_dark_side_update.desktop"
+sed -i "s|~|$HOME|g" "$HOME/.config/autostart/TheDarkSide-check-version.desktop"
+sed -i "s|~|$HOME|g" "$HOME/.config/autostart/TheDarkSide-update.desktop"
 
 echo "WebBrowser=firefox" > "$HOME/.config/xfce4/helpers.rc"
 echo "FileManager=Thunar" >> "$HOME/.config/xfce4/helpers.rc"
@@ -145,13 +145,13 @@ echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n"
 source "$HOME/.bashrc"
 function with_new_bashrc {
   dconf write /com/gexperts/Terminix/quake-height-percent 50
-  dconf write /com/gexperts/Terminix/profiles/the_dark_side/visible-name "'The Dark Side'"
-  dconf write /com/gexperts/Terminix/profiles/list "['the_dark_side']"
-  dconf write /com/gexperts/Terminix/profiles/default "'the_dark_side'"
-  dconf write /com/gexperts/Terminix/profiles/the_dark_side/font "'Roboto Mono Medium for Powerline Medium 12'"
-  dconf write /com/gexperts/Terminix/profiles/the_dark_side/use-system-font false
-  dconf write /com/gexperts/Terminix/profiles/the_dark_side/terminal-bell "'icon'"
-  dconf write /com/gexperts/Terminix/profiles/the_dark_side/cursor-shape "'underline'"
+  dconf write /com/gexperts/Terminix/profiles/TheDarkSide/visible-name "'The Dark Side'"
+  dconf write /com/gexperts/Terminix/profiles/list "['TheDarkSide']"
+  dconf write /com/gexperts/Terminix/profiles/default "'TheDarkSide'"
+  dconf write /com/gexperts/Terminix/profiles/TheDarkSide/font "'Roboto Mono Medium for Powerline Medium 12'"
+  dconf write /com/gexperts/Terminix/profiles/TheDarkSide/use-system-font false
+  dconf write /com/gexperts/Terminix/profiles/TheDarkSide/terminal-bell "'icon'"
+  dconf write /com/gexperts/Terminix/profiles/TheDarkSide/cursor-shape "'underline'"
 
   bash-it enable plugin alias-completion base dirs extract git git-subrepo history proxy ssh tmux xterm
   bash-it enable completion bash-it defaults dirs git makefile ssh system tmux
