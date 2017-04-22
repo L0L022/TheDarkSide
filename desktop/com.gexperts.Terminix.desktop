@@ -2,7 +2,7 @@
 Version=1.0
 Name=Terminix
 Comment=A tiling terminal for Gnome
-Exec=~/.cache/TheDarkSide/terminix.bash
+Exec=bash -i -c terminix
 Terminal=false
 Type=Application
 StartupNotify=true

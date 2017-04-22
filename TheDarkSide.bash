@@ -7,6 +7,7 @@ if [ -z "$last_release" ]; then
 fi
 
 echo "$last_release"
-mkdir -p "$HOME/.cache/TheDarkSide/"
-curl -so "$HOME/.cache/TheDarkSide/install.bash" https://raw.githubusercontent.com/L0L022/TheDarkSide/"$last_release"/script/install.bash
-bash "$HOME/.cache/TheDarkSide/install.bash"
+TDS="$HOME/.cache/TheDarkSide"
+mkdir -p "$TDS"
+curl -so "$TDS/install.bash" https://raw.githubusercontent.com/L0L022/TheDarkSide/"$last_release"/script/install.bash
+bash "$TDS/install.bash"

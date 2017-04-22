@@ -2,7 +2,7 @@
 Type=Application
 Name=The Dark Side Update
 Comment=Install user-config & update atom packages & bash-it
-Exec=bash -i ~/.cache/TheDarkSide/update.bash
+Exec=bash -i -c TDS-update
 StartupNotify=false
 Terminal=false
 Icon=system-software-update

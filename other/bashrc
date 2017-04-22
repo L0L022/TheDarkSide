@@ -9,15 +9,27 @@ if [[ $TERMINIX_ID ]]; then
   source /etc/profile.d/vte.sh
 fi
 
+TDS="$HOME/.cache/TheDarkSide"
+
+function atom {
+  local PWD
+  PWD="$TDS/atom"
+  "$TDS"/atom/atom
+}
+
 function tmux {
-  ~/.cache/TheDarkSide/tmux -S /tmp/tmux "$@"
+  "$TDS"/tmux -S /tmp/tmux "$@"
   chmod 777 /tmp/tmux
 }
 tmux new -d -s TheDarkSide 2>/dev/null
 
-alias dconf=~/.cache/TheDarkSide/dconf
-alias terminix=~/.cache/TheDarkSide/terminix.bash
-alias apm=~/.cache/TheDarkSide/atom/resources/app/apm/bin/apm
+alias dconf='$TDS/dconf'
+alias terminix='$TDS/terminix.bash'
+alias apm='$TDS/atom/resources/app/apm/bin/apm'
+
+alias TDS-check-version='$TDS/check-version.bash'
+alias TDS-update='$TDS/update.bash'
+alias TDS-volume='$TDS/volume.bash'
 
 export BASH_IT="$HOME/.cache/TheDarkSide/bash_it"
 export BASH_IT_THEME='powerline-multiline'

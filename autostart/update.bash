@@ -1,6 +1,6 @@
 #!/bin/bash
 
-script="$HOME/.cache/TheDarkSide/user-config.bash"
+script="$TDS/user-config.bash"
 
 echo "install user-config.bash"
 curl -sL -o "$script" "https://raw.githubusercontent.com/L0L022/TheDarkSide/master/script/user-config.bash"

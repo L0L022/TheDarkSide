@@ -1,15 +1,15 @@
 #!/bin/bash
 
 function set_variables {
-  home_cache="$HOME/.cache/TheDarkSide"
+  TDS="$HOME/.cache/TheDarkSide"
   package_name="package.tar.xz"
   package_dir="$HOME/.cache/"
   if [ -w "/var/tmp/" ]; then
     package_dir="/var/tmp/TheDarkSide"
   fi
   package_location="$package_dir/$package_name"
-  package_version_location="$package_dir/package_version"
-  package_installed_version_location="$home_cache/current_package_version"
+  package_version_location="$package_dir/package-version"
+  package_installed_version_location="$TDS/current-package-version"
 
   package_version="$(cat "$package_version_location")"
   if [ -z "$package_version" ]; then
@@ -34,13 +34,12 @@ function install_pv {
   pv_exec="/usr/bin/pv"
   if ! pv -V >/dev/null 2>&1; then
     echo "install pv"
-    old_dir="$PWD"
     mkdir -p /tmp/pv
     cd /tmp/pv || exit
     curl -sL -o pv.deb "http://ftp.fr.debian.org/debian/pool/main/p/pv/pv_1.5.7-2_amd64.deb"
     ar x pv.deb data.tar.xz
     tar xf data.tar.xz
-    cd "$old_dir" || exit
+    cd - || exit
     pv_exec="/tmp/pv/usr/bin/pv"
   fi
 }
@@ -48,7 +47,7 @@ function install_pv {
 function install_package {
   echo "install: $install_version"
   echo "remove"
-  rm -rf "$home_cache" "$HOME/.atom" "$HOME/.icons" "$HOME/.themes"
+  rm -rf "$TDS" "$HOME/.atom" "$HOME/.icons" "$HOME/.themes"
   if [ "$use_gui" = true ]; then
     install_pv
     echo "extract"
@@ -58,7 +57,7 @@ function install_package {
     tar xf "$package_location" -C "$HOME"
   fi
   echo "install"
-  bash "$home_cache/config-at-runtime.bash"
+  bash -i "$TDS/config-at-runtime.bash"
   echo "$install_version" > "$package_installed_version_location"
 }
 
@@ -87,7 +86,7 @@ function install {
 }
 
 function update {
-  bash -i "$home_cache/update.bash"
+  bash -i "$TDS/update.bash"
 }
 
 if zenity --version >/dev/null 2>&1; then
