@@ -229,7 +229,7 @@ install_theme &> log/theme
 install_icon_theme &> log/icon_theme
 install_software &> log/software
 
-cp ../desktop/volume.desktop home_copy/.local/share/applications/
+cp ../desktop/TheDarkSide-volume.desktop home_copy/.local/share/applications/
 chmod u+x home_copy/.local/share/applications/*
 
 mkdir -p home_copy/.config/autostart

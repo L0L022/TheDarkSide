@@ -10,10 +10,12 @@ if [[ $TERMINIX_ID ]]; then
 fi
 
 TDS="$HOME/.cache/TheDarkSide"
+export TDS
 
 function atom {
   local PWD
   PWD="$TDS/atom"
+  export PWD
   "$TDS"/atom/atom
 }
 
