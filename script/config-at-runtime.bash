@@ -48,7 +48,7 @@ function load_icon {
   cp /usr/share/applications/firefox-esr.desktop "$HOME/.config/xfce4/panel/launcher-21/"
   cp /usr/share/applications/exo-terminal-emulator.desktop "$HOME/.config/xfce4/panel/launcher-22/"
   cp "$HOME/.local/share/applications/atom.desktop" "$HOME/.config/xfce4/panel/launcher-23/"
-  cp "$HOME/.local/share/applications/volume.desktop" "$HOME/.config/xfce4/panel/launcher-24/"
+  cp "$HOME/.local/share/applications/TheDarkSide-volume.desktop" "$HOME/.config/xfce4/panel/launcher-24/"
   cp /usr/share/applications/libreoffice-startcenter.desktop "$HOME/.config/xfce4/panel/launcher-25/"
 }
 
