@@ -11,9 +11,9 @@ Pour plus d'infos allez voir le [site officiel](https://l0l022.github.io/TheDark
 ### En une seule commande
 
 ```
-curl -sL -o ~/net-home/install-TheDarkSide.bash "https://raw.githubusercontent.com/L0L022/TheDarkSide/master/install-TheDarkSide.bash" && chmod u+x ~/net-home/install-TheDarkSide.bash && bash ~/net-home/install-TheDarkSide.bash
+TDS="$HOME/net-home/TheDarkSide.bash" && curl -sL -o "$TDS" "https://raw.githubusercontent.com/L0L022/TheDarkSide/master/TheDarkSide.bash" && chmod u+x "$TDS" && bash "$TDS"
 ```
 
 ### Manuellement
 
-Il faut télécharger le super script [install-TheDarkSide.bash](https://raw.githubusercontent.com/L0L022/TheDarkSide/master/install-TheDarkSide.bash) (clique droit -> Enregistrer la cible du lien sous) et le mettre dans le net-home ou une clef usb. Après il ne reste plus qu'a l'exécuter et le tour est joué ! La **magie vaudou** (ou bash pour les connaisseurs) prend (normalement) moins d'une demie minute pour faire son effet.
+Il faut télécharger le super script [TheDarkSide.bash](https://raw.githubusercontent.com/L0L022/TheDarkSide/master/TheDarkSide.bash) (clique droit -> Enregistrer la cible du lien sous) et le mettre dans le net-home ou une clef usb. Après il ne reste plus qu'a l'exécuter et le tour est joué ! La **magie vaudou** (ou bash pour les connaisseurs) prend (normalement) moins d'une demie minute pour faire son effet.
