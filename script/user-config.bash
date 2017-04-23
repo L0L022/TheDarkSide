@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -rf "$HOME/.cache/the_dark_side"
-
 function install_qt {
   desktop_file="[Desktop Entry]
 Type=Application
