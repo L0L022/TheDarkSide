@@ -96,7 +96,7 @@ fi
 if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 1
   xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 1
-  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 1
   add_english_things
 fi
 
