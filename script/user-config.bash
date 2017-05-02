@@ -96,10 +96,7 @@ fi
 if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 1
   xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 1
-  xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s Adwaita
-  xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Moka
-  xfconf-query -n -c xfwm4 -p /general/theme -t string -s Arc
-  install_atom_theme atom-material-ui atom-material-syntax-light
+  xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
   add_english_things
 fi
 
