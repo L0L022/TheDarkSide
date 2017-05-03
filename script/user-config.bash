@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if ! ps -A | grep -q xfce4-panel; then
+  xfce4-panel &
+fi
+
 function install_qt {
   desktop_file="[Desktop Entry]
 Type=Application
@@ -46,7 +50,6 @@ Type=Link
 URL=https://discord.gg/dvbhh6w
 Icon=hipchat" > "$DESKTOP/an_discord.desktop"
   chmod u+x "$DESKTOP/an_discord.desktop"
-  git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
 }
 
 function copy_ssh {
@@ -88,6 +91,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   git clone git@github.com:L0L022/TheDarkSide.git "$HOME/Bureau/TheDarkSide"
+  git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
   add_english_things
   install_qt &
 fi
