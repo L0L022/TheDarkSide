@@ -85,6 +85,8 @@ fi
 #loic e
 if echo "$USER" | grep -q "e16006130"; then
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+  xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s false
+  xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
   git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"

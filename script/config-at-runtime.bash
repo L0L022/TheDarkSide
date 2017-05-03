@@ -20,8 +20,6 @@ xfconf-query -n -c xfwm4 -p /general/use_compositing -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_frame_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/show_popup_shadow -t bool -s true
 xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 2
-xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s false
-xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
 
 xfconf-query -n -c keyboards -p /Default/Numlock -t bool -s true
 
