@@ -105,6 +105,13 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
   xfconf-query -n -c thunar-volman -p /autobrowse/enabled -t bool -s true
   xfconf-query -n -c thunar-volman -p /automount-media/enabled -t bool -s true
 
+  gsettings set org.gnome.gedit.preferences.editor display-line-numbers true
+  gsettings set org.gnome.gedit.preferences.editor bracket-matching true
+  gsettings set org.gnome.gedit.preferences.editor tabs-size 4
+  gsettings set org.gnome.gedit.preferences.editor insert-spaces true
+  gsettings set org.gnome.gedit.preferences.editor scheme 'cobalt'
+  gsettings set org.gnome.gedit.preferences.editor auto-indent true
+
   xdg-mime default Thunar.desktop inode/directory
   xdg-mime default ristretto.desktop image/png image/gif image/jpeg image/bmp image/x-pixmap image/tiff image/svg+xml image/x-xpixmap
   xdg-mime default evince.desktop application/pdf application/x-bzpdf application/x-gzpdf application/x-xzpdf application/x-ext-pdf application/postscript application/x-bzpostscript application/x-gzpostscript image/x-eps image/x-bzeps image/x-gzeps application/x-ext-ps application/x-ext-eps application/x-dvi application/x-bzdvi application/x-gzdvi application/x-ext-dvi image/vnd.djvu application/x-ext-djv application/x-ext-djvu image/tiff application/x-cbr application/x-cbz application/x-cb7 application/x-cbt application/x-ext-cbr application/x-ext-cbz application/x-ext-cb7 application/x-ext-cbt application/oxps application/vnd.ms-xpsdocument
