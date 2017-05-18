@@ -14,6 +14,7 @@ git-plus
 highlight-selected
 intentions
 language-cmake
+language-doxygen
 language-pgsql
 language-x86-64-assembly
 linter
@@ -43,6 +44,7 @@ scilab-language
 script
 simple-drag-drop-text
 split-diff
+svn
 switch-header-source
 synced-sidebar
 tool-bar

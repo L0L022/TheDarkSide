@@ -1,8 +1,5 @@
 #!/bin/bash
 
-xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s true
-echo "export SVN_EDITOR=\"gedit -s\"" >> ~/.bashrc
-
 if ! ps -A | grep -q xfce4-panel; then
   xfce4-panel &
 fi
@@ -27,6 +24,8 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
       /tmp/qt-installer.run TargetDir=/var/tmp/Qt
       echo "$desktop_file" > "$HOME/Bureau/qtcreator.desktop"
       chmod u+x "$HOME/Bureau/qtcreator.desktop"
+    else
+      cp "/usr/share/applications/qtcreator.desktop" "$HOME/Bureau/qtcreator.desktop"
     fi
   fi
 }

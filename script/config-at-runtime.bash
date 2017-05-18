@@ -3,7 +3,37 @@
 fc-cache -f "$HOME/.local/share/fonts"
 xdg-user-dirs-update
 
-if echo $XDG_CURRENT_DESKTOP | grep -iq "xfce"; then
+function make_desktop_website {
+  name="$1"
+  url="$2"
+  file_name="$3"
+  icon="$4"
+  if [ -z "$icon" ]; then
+    icon="emblem-web"
+  fi
+  echo "[Desktop Entry]
+Encoding=UTF-8
+Name=$name
+Type=Link
+URL=$url
+Icon=$icon" > "$DESKTOP/$file_name.desktop"
+}
+
+cp /usr/share/applications/{scilab,blender,chromium,kde4/kcalc}.desktop "$DESKTOP"
+sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
+make_desktop_website "The Dark Side" "https://l0l022.github.io/TheDarkSide/" "TheDarkSide" "system-help"
+make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
+make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
+make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref" "text-x-cpp"
+make_desktop_website "Github" "https://github.com/" "github" "web-github"
+make_desktop_website "Git guide" "https://rogerdudler.github.io/git-guide/index.fr.html" "gitguide" "gitg"
+make_desktop_website "GDrive" "https://drive.google.com/" "gdrive" "web-google-drive"
+make_desktop_website "Spotify Web" "https://play.spotify.com/" "spotify" "web-spotify"
+chmod u+x "$DESKTOP"/*
+
+if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
+  xfdesktop --arrange
+
   THEME="Arc-Dark"
   DESKTOP="$(xdg-user-dir DESKTOP)"
 
@@ -53,7 +83,8 @@ if echo $XDG_CURRENT_DESKTOP | grep -iq "xfce"; then
 
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 25 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
 
-  xfce4-panel -r &
+  xfce4-panel -q
+  xfce4-panel &
 
   load_icon &
 
@@ -86,41 +117,12 @@ if echo $XDG_CURRENT_DESKTOP | grep -iq "xfce"; then
   echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n" > "$HOME/.config/xfce4/terminal/terminalrc"
 fi
 
-function make_desktop_website {
-  name="$1"
-  url="$2"
-  file_name="$3"
-  icon="$4"
-  if [ -z "$icon" ]; then
-    icon="emblem-web"
-  fi
-  echo "[Desktop Entry]
-Encoding=UTF-8
-Name=$name
-Type=Link
-URL=$url
-Icon=$icon" > "$DESKTOP/$file_name.desktop"
-}
-
-cp /usr/share/applications/{scilab,blender,chromium,kde4/kcalc}.desktop "$DESKTOP"
-sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
-make_desktop_website "The Dark Side" "https://l0l022.github.io/TheDarkSide/" "TheDarkSide" "system-help"
-make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
-make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"
-make_desktop_website "C++ ref" "http://en.cppreference.com/w/" "cppref" "text-x-cpp"
-make_desktop_website "Github" "https://github.com/" "github" "web-github"
-make_desktop_website "Git guide" "https://rogerdudler.github.io/git-guide/index.fr.html" "gitguide" "gitg"
-make_desktop_website "GDrive" "https://drive.google.com/" "gdrive" "web-google-drive"
-make_desktop_website "Spotify Web" "https://play.spotify.com/" "spotify" "web-spotify"
-chmod u+x "$DESKTOP"/*
-xfdesktop --arrange
-
 mkdir -p "$HOME/.local/share/applications/"
 xdg-mime default libreoffice-writer.desktop application/vnd.oasis.opendocument.text application/vnd.oasis.opendocument.text-template application/vnd.oasis.opendocument.text-web application/vnd.oasis.opendocument.text-master application/vnd.oasis.opendocument.text-master-template application/vnd.sun.xml.writer application/vnd.sun.xml.writer.template application/vnd.sun.xml.writer.global application/msword application/vnd.ms-word application/x-doc application/x-hwp application/rtf text/rtf application/vnd.wordperfect application/wordperfect application/vnd.lotus-wordpro application/vnd.openxmlformats-officedocument.wordprocessingml.document application/vnd.ms-word.document.macroenabled.12 application/vnd.openxmlformats-officedocument.wordprocessingml.template application/vnd.ms-word.template.macroenabled.12 application/vnd.ms-works application/vnd.stardivision.writer-global application/x-extension-txt application/x-t602 text/plain application/vnd.oasis.opendocument.text-flat-xml application/x-fictionbook+xml application/macwriteii application/x-aportisdoc application/prs.plucker application/vnd.palm application/clarisworks application/x-sony-bbeb application/x-abiword application/x-iwork-pages-sffpages application/x-mswrite
 xdg-mime default libreoffice-calc.desktop application/vnd.oasis.opendocument.spreadsheet application/vnd.oasis.opendocument.spreadsheet-template application/vnd.sun.xml.calc application/vnd.sun.xml.calc.template application/msexcel application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-excel.sheet.macroenabled.12 application/vnd.openxmlformats-officedocument.spreadsheetml.template application/vnd.ms-excel.template.macroenabled.12 application/vnd.ms-excel.sheet.binary.macroenabled.12 text/csv application/x-dbf text/spreadsheet application/csv application/excel application/tab-separated-values application/vnd.lotus-1-2-3 application/vnd.oasis.opendocument.chart application/vnd.oasis.opendocument.chart-template application/x-dbase application/x-dos_ms_excel application/x-excel application/x-msexcel application/x-ms-excel application/x-quattropro application/x-123 text/comma-separated-values text/tab-separated-values text/x-comma-separated-values text/x-csv application/vnd.oasis.opendocument.spreadsheet-flat-xml application/vnd.ms-works application/clarisworks application/x-iwork-numbers-sffnumbers
 xdg-mime default libreoffice-impress.desktop application/vnd.oasis.opendocument.presentation application/vnd.oasis.opendocument.presentation-template application/vnd.sun.xml.impress application/vnd.sun.xml.impress.template application/mspowerpoint application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/vnd.ms-powerpoint.presentation.macroenabled.12 application/vnd.openxmlformats-officedocument.presentationml.template application/vnd.ms-powerpoint.template.macroenabled.12 application/vnd.openxmlformats-officedocument.presentationml.slide application/vnd.openxmlformats-officedocument.presentationml.slideshow application/vnd.ms-powerpoint.slideshow.macroEnabled.12 application/vnd.oasis.opendocument.presentation-flat-xml application/x-iwork-keynote-sffkey
 xdg-mime default libreoffice-draw.desktop application/vnd.oasis.opendocument.graphics application/vnd.oasis.opendocument.graphics-flat-xml application/vnd.oasis.opendocument.graphics-template application/vnd.sun.xml.draw application/vnd.sun.xml.draw.template application/vnd.visio application/x-wpg application/vnd.corel-draw application/vnd.ms-publisher image/x-freehand application/clarisworks application/x-pagemaker application/pdf
-xdg-mime default atom.desktop text/css text/csv text/html text/plain text/xml text/x-h text/x-c
+xdg-mime default org.gnome.gedit.desktop text/css text/csv text/html text/plain text/xml text/x-h text/x-c
 cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
 
 sed -i "s|~|$HOME|g" "$HOME/.config/autostart/TheDarkSide-check-version.desktop"
