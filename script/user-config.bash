@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if ! ps -A | grep -q xfce4-panel; then
-  xfce4-panel &
-fi
-
 function install_qt {
   desktop_file="[Desktop Entry]
 Type=Application
