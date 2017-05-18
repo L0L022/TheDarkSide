@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DESKTOP="$(xdg-user-dir DESKTOP)"
+
 fc-cache -f "$HOME/.local/share/fonts"
 xdg-user-dirs-update
 
@@ -35,7 +37,6 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
   xfdesktop --arrange
 
   THEME="Arc-Dark"
-  DESKTOP="$(xdg-user-dir DESKTOP)"
 
   xfconf-query -n -c xsettings -p /Net/ThemeName -t string -s "$THEME"
   xfconf-query -n -c xsettings -p /Net/IconThemeName -t string -s Arc
@@ -83,7 +84,7 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
 
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 25 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
 
-  xfce4-panel -q
+  killall xfce4-panel
   xfce4-panel &
 
   load_icon &
