@@ -55,16 +55,24 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
 
   xfconf-query -n -c keyboards -p /Default/Numlock -t bool -s true
 
+  killall xfce4-panel
   xfconf-query -r -R -c xfce4-panel -p /
   XFCE_PANEL_MIGRATE_DEFAULT="" /usr/lib/x86_64-linux-gnu/xfce4/panel/migrate
+
   xfconf-query -r -R -c xfce4-panel -p /panels/panel-2
   xfconf-query -c xfce4-panel -p /panels  -n -a -t int -s 1
+  xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 2
+  xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/show-button-title -t bool -s false
+  xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/button-icon -t string -s debian-logo
+  xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
+  xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 25 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
 
   function make_raccourci {
     xfconf-query -n -c xfce4-panel -p "/plugins/plugin-$1" -t string -s launcher
     mkdir -p "$HOME/.config/xfce4/panel/launcher-$1"
   }
 
+  rm -r "$HOME/.config/xfce4/panel/"
   make_raccourci 20
   make_raccourci 21
   make_raccourci 22
@@ -82,17 +90,12 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
     cp /usr/share/applications/libreoffice-startcenter.desktop "$HOME/.config/xfce4/panel/launcher-25/"
   }
 
-  xfconf-query -n -c xfce4-panel -p /panels/panel-1/plugin-ids -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -t int -s 1 -s 20 -s 21 -s 22 -s 23 -s 24 -s 25 -s 3 -s 15 -s 4 -s 5 -s 6 -s 2
-
-  killall xfce4-panel
-  xfce4-panel &
-
+  (
+    cd ~ || exit
+    nohup xfce4-panel > /dev/null 2>&1 &
+    cd - || exit
+  )
   load_icon &
-
-  xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 2
-  xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/show-button-title -t bool -s false
-  xfconf-query -n -c xfce4-panel -p /plugins/plugin-1/button-icon -t string -s debian-logo
-  xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 2
 
   xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -t bool -s false
   xfconf-query -n -c xfce4-desktop -p /desktop-icons/file-icons/show-trash -t bool -s false
