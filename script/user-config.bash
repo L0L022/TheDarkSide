@@ -1,5 +1,8 @@
 #!/bin/bash
 
+xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool -s true
+echo "export SVN_EDITOR=\"gedit -s\"" >> ~/.bashrc
+
 if ! ps -A | grep -q xfce4-panel; then
   xfce4-panel &
 fi
@@ -59,6 +62,12 @@ function copy_ssh {
   chmod 400 ~/.ssh/id_rsa*
 }
 
+function svn_clone {
+  cd ~/Bureau || exit
+  svn checkout --username "$USER" --password "svn!$USER" "$1"
+  cd - || exit
+}
+
 function install_atom_theme {
   apm install "$1" "$2"
   sed -i -e "s/northem-dark-atom-ui/$1/g" -e "s/atom-monokai/$2/g" "$HOME/.atom/config.cson"
@@ -94,6 +103,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   git clone git@github.com:L0L022/TheDarkSide.git "$HOME/Bureau/TheDarkSide"
   git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
   add_english_things
   install_qt &
 fi
@@ -110,6 +120,7 @@ fi
 if echo "$USER" | grep -q "s16001821"; then
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
   git clone https://github.com/LinkIsACake/IUT.git "$HOME/Bureau/IUT"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
 fi
 
 #loic l
@@ -130,4 +141,24 @@ fi
 #killian
 if echo "$USER" | grep -q "w16003485"; then
   add_english_things
+fi
+
+#nassim
+if echo "$USER" | grep -q "e16013387"; then
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+fi
+
+#tristan
+if echo "$USER" | grep -q "m16020665"; then
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+fi
+
+#lucas
+if echo "$USER" | grep -q "d16008614"; then
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+fi
+
+#nathan
+if echo "$USER" | grep -q "m16016249"; then
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
 fi
