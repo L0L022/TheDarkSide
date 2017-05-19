@@ -46,7 +46,6 @@ simple-drag-drop-text
 split-diff
 svn
 switch-header-source
-synced-sidebar
 tool-bar
 tree-view-autoresize
 tree-view-git-status

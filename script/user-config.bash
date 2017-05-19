@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apm install tool-bar tree-view-autoresize tree-view-git-status
+
 function install_qt {
   desktop_file="[Desktop Entry]
 Type=Application
