@@ -100,6 +100,7 @@ if echo "$USER" | grep -q "e16006130"; then
   git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
   git clone git@github.com:L0L022/TheDarkSide.git "$HOME/Bureau/TheDarkSide"
   git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
+  git clone git@github.com:L0L022/SuperProjetCPP.git "$HOME/Bureau/SuperProjetCPP"
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
   add_english_things
   install_qt &
@@ -116,7 +117,11 @@ fi
 #leo
 if echo "$USER" | grep -q "s16001821"; then
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 4
+  git config --global push.default simple
+  git config --global user.email "leo.sudreau.sin@gmail.com"
+  git config --global user.name "LinkIsACake"
   git clone https://github.com/LinkIsACake/IUT.git "$HOME/Bureau/IUT"
+  git clone git@github.com:L0L022/SuperProjetCPP.git "$HOME/Bureau/SuperProjetCPP"
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
 fi
 
