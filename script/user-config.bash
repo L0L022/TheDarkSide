@@ -59,6 +59,16 @@ function copy_ssh {
   chmod 400 ~/.ssh/id_rsa*
 }
 
+function git_clone {
+  if [ -d "$2" ]; then
+    cd "$2" || exit
+    git pull
+    cd - || exit
+  else
+    git clone "$1" "$2"
+  fi
+}
+
 function svn_clone {
   cd ~/Bureau || exit
   svn checkout --username "$USER" --password "svn!$USER" "$1"
@@ -81,7 +91,8 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global user.email "alex.dejaegher@gmail.com"
   git config --global push.default simple
   copy_ssh
-  git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
+  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash"
+  git_clone "git@github.com:bohrin/Projet-C-.git" "$HOME/Bureau/Projet-C-"
   install_atom_theme atom-dark-minimal-ui seti-syntax
   sed -i "s|^\"\*\":$|\"*\":\n  \"atom-dark-minimal-ui\":\n      colors:\n        customColor: \"#850404\"|g" "$HOME/.atom/config.cson"
   #install_cursor_batman
@@ -95,12 +106,12 @@ if echo "$USER" | grep -q "e16006130"; then
   xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
-  git clone git@github.com:L0L022/sem1_iut.git "$HOME/Bureau/sem1_iut"
-  git clone git@github.com:L0L022/sem2_iut.git "$HOME/Bureau/sem2_iut"
-  git clone git@github.com:L0L022/projet_bash.git "$HOME/Bureau/projet_bash"
-  git clone git@github.com:L0L022/TheDarkSide.git "$HOME/Bureau/TheDarkSide"
-  git clone git@github.com:L0L022/projet7.git "$HOME/Bureau/projet7"
-  git clone git@github.com:L0L022/SuperProjetCPP.git "$HOME/Bureau/SuperProjetCPP"
+  git_clone "git@github.com:L0L022/sem1_iut.git" "$HOME/Bureau/sem1_iut"
+  git_clone "git@github.com:L0L022/sem2_iut.git" "$HOME/Bureau/sem2_iut"
+  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash"
+  git_clone "git@github.com:L0L022/TheDarkSide.git" "$HOME/Bureau/TheDarkSide"
+  git_clone "git@github.com:L0L022/projet7.git" "$HOME/Bureau/projet7"
+  git_clone "git@github.com:L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP"
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
   add_english_things
   install_qt &
@@ -120,13 +131,16 @@ if echo "$USER" | grep -q "s16001821"; then
   git config --global push.default simple
   git config --global user.email "leo.sudreau.sin@gmail.com"
   git config --global user.name "LinkIsACake"
-  git clone https://github.com/LinkIsACake/IUT.git "$HOME/Bureau/IUT"
-  git clone git@github.com:L0L022/SuperProjetCPP.git "$HOME/Bureau/SuperProjetCPP"
+  git_clone "https://github.com/LinkIsACake/IUT.git" "$HOME/Bureau/IUT"
+  git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP"
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
 fi
 
 #loic l
 if echo "$USER" | grep -q "l16002580"; then
+  git config --global push.default simple
+  #git config --global user.email ""
+  git config --global user.name "loiclemouel"
   add_english_things
 fi
 
@@ -137,12 +151,25 @@ fi
 
 #laurent
 if echo "$USER" | grep -q "d16013526"; then
+  git config --global push.default simple
+  git config --global user.email "laurentdoiteau@free.fr"
+  git config --global user.name "napoleon789789"
+  git_clone "https://github.com/napoleon789789/IUT" "$HOME/Bureau/IUT"
   add_english_things
 fi
 
 #killian
 if echo "$USER" | grep -q "w16003485"; then
+  git config --global push.default simple
+  git config --global user.email "killianwolfger@hotmail.fr"
+  git config --global user.name "killian05000"
+  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp"
   add_english_things
+fi
+
+#remy
+if echo "$USER" | grep -q "y16006432"; then
+  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp"
 fi
 
 #nassim
@@ -164,3 +191,7 @@ fi
 if echo "$USER" | grep -q "m16016249"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
 fi
+
+#louis
+# if echo "$USER" | grep -q "j16007553"; then
+# fi
