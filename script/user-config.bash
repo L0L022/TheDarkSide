@@ -1,7 +1,5 @@
 #!/bin/bash
 
-apm install tool-bar tree-view-autoresize tree-view-git-status
-
 function install_qt {
   desktop_file="[Desktop Entry]
 Type=Application
@@ -26,6 +24,18 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
       cp "/usr/share/applications/qtcreator.desktop" "$HOME/Bureau/qtcreator.desktop"
     fi
   fi
+}
+
+function install_boost {
+  old="$PWD"
+  cd /var/tmp/ || exit
+  curl -sL -o boost.tar.bz2 "https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.bz2"
+  tar xf boost.tar.bz2
+  cd boost_1_64_0 || exit
+  ./bootstrap.sh
+  ./b2 --with-test --with-signals
+  cd "$old" || exit
+  sed -i "s|^\"\*\":$|\"*\":\n  \"build-cmake\":\n    cmake_arguments: \" -DCMAKE_BUILD_TYPE=Debug -DBOOST_ROOT=/var/tmp/boost_1_64_0 -DBoost_NO_SYSTEM_PATHS=ON\"|g" "$HOME/.atom/config.cson"
 }
 
 function wallpaper_ilovebash {
@@ -91,12 +101,12 @@ if echo "$USER" | grep -q "d16007062"; then
   git config --global user.email "alex.dejaegher@gmail.com"
   git config --global push.default simple
   copy_ssh
-  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash"
-  git_clone "git@github.com:bohrin/Projet-C-.git" "$HOME/Bureau/Projet-C-"
+  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash" &
+  git_clone "git@github.com:bohrin/Projet-C-.git" "$HOME/Bureau/Projet-C-" &
   install_atom_theme atom-dark-minimal-ui seti-syntax
   sed -i "s|^\"\*\":$|\"*\":\n  \"atom-dark-minimal-ui\":\n      colors:\n        customColor: \"#850404\"|g" "$HOME/.atom/config.cson"
   #install_cursor_batman
-  add_english_things
+  add_english_things &
 fi
 
 #loic e
@@ -106,15 +116,16 @@ if echo "$USER" | grep -q "e16006130"; then
   xfconf-query -n -c xfwm4 -p /general/focus_delay -t int -s 0
   bash "$HOME/net-home/start_git.bash"
   copy_ssh
-  git_clone "git@github.com:L0L022/sem1_iut.git" "$HOME/Bureau/sem1_iut"
-  git_clone "git@github.com:L0L022/sem2_iut.git" "$HOME/Bureau/sem2_iut"
-  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash"
-  git_clone "git@github.com:L0L022/TheDarkSide.git" "$HOME/Bureau/TheDarkSide"
-  git_clone "git@github.com:L0L022/projet7.git" "$HOME/Bureau/projet7"
-  git_clone "git@github.com:L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP"
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
-  add_english_things
+  git_clone "git@github.com:L0L022/sem1_iut.git" "$HOME/Bureau/sem1_iut" &
+  git_clone "git@github.com:L0L022/sem2_iut.git" "$HOME/Bureau/sem2_iut" &
+  git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash" &
+  git_clone "git@github.com:L0L022/TheDarkSide.git" "$HOME/Bureau/TheDarkSide" &
+  git_clone "git@github.com:L0L022/projet7.git" "$HOME/Bureau/projet7" &
+  git_clone "git@github.com:L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  add_english_things &
   install_qt &
+  install_boost &
 fi
 
 #hugo
@@ -122,7 +133,7 @@ if echo "$USER" | grep -q "d16002496"; then
   xfconf-query -n -c xfce4-panel -p /panels/panel-1/nrows -t int -s 1
   xfconf-query -n -c xfce4-panel -p /plugins/plugin-4/rows -t int -s 1
   xfconf-query -n -c xfwm4 -p /general/workspace_count -t int -s 1
-  add_english_things
+  add_english_things &
 fi
 
 #leo
@@ -131,9 +142,10 @@ if echo "$USER" | grep -q "s16001821"; then
   git config --global push.default simple
   git config --global user.email "leo.sudreau.sin@gmail.com"
   git config --global user.name "LinkIsACake"
-  git_clone "https://github.com/LinkIsACake/IUT.git" "$HOME/Bureau/IUT"
-  git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP"
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+  git_clone "https://github.com/LinkIsACake/IUT.git" "$HOME/Bureau/IUT" &
+  git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  install_boost &
 fi
 
 #loic l
@@ -141,12 +153,12 @@ if echo "$USER" | grep -q "l16002580"; then
   git config --global push.default simple
   #git config --global user.email ""
   git config --global user.name "loiclemouel"
-  add_english_things
+  add_english_things &
 fi
 
 #martin
 if echo "$USER" | grep -q "a16000520"; then
-  add_english_things
+  add_english_things &
 fi
 
 #laurent
@@ -154,8 +166,8 @@ if echo "$USER" | grep -q "d16013526"; then
   git config --global push.default simple
   git config --global user.email "laurentdoiteau@free.fr"
   git config --global user.name "napoleon789789"
-  git_clone "https://github.com/napoleon789789/IUT" "$HOME/Bureau/IUT"
-  add_english_things
+  git_clone "https://github.com/napoleon789789/IUT" "$HOME/Bureau/IUT" &
+  add_english_things &
 fi
 
 #killian
@@ -163,33 +175,40 @@ if echo "$USER" | grep -q "w16003485"; then
   git config --global push.default simple
   git config --global user.email "killianwolfger@hotmail.fr"
   git config --global user.name "killian05000"
-  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp"
-  add_english_things
+  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp" &
+  git_clone "https://github.com/killian05000/pixelGalaxy.git" "$HOME/Bureau/pixelGalaxy" &
+  git_clone "https://github.com/killian05000/warlockArena.git" "$HOME/Bureau/warlockArena" &
+  add_english_things &
+  install_qt &
 fi
 
 #remy
 if echo "$USER" | grep -q "y16006432"; then
-  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp"
+  git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp" &
 fi
 
 #nassim
 if echo "$USER" | grep -q "e16013387"; then
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  install_boost &
 fi
 
 #tristan
 if echo "$USER" | grep -q "m16020665"; then
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  install_boost &
 fi
 
 #lucas
 if echo "$USER" | grep -q "d16008614"; then
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  install_boost &
 fi
 
 #nathan
 if echo "$USER" | grep -q "m16016249"; then
-  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1"
+  svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  install_boost &
 fi
 
 #louis
