@@ -146,6 +146,8 @@ if echo "$USER" | grep -q "s16001821"; then
   git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
   install_boost &
+  curl -so "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg" "http://vignette4.wikia.nocookie.net/warframe/images/5/5d/Warframe-Hydroid.jpg"
+  xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg"
 fi
 
 #loic l
