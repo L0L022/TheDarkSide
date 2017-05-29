@@ -153,7 +153,7 @@ fi
 #loic l
 if echo "$USER" | grep -q "l16002580"; then
   git config --global push.default simple
-  #git config --global user.email ""
+  git config --global user.email "loiclemouel98@gmail.com"
   git config --global user.name "loiclemouel"
   add_english_things &
 fi
