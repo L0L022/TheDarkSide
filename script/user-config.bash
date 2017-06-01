@@ -33,9 +33,50 @@ function install_boost {
   tar xf boost.tar.bz2
   cd boost_1_64_0 || exit
   ./bootstrap.sh
-  ./b2 --with-test --with-signals
+
+  libs=(0 atomic 1 chrono 2 container 3 context 4 coroutine 5 coroutine2 6 date_time 7 exception 8 fiber 9 filesystem 10 graph 11 graph_parallel 12 iostreams 13 locale 14 log 15 math 16 metaparse 17 mpi 18 program_options 19 python 20 random 21 regex 22 serialization 23 signals 24 system 25 test 26 thread 27 timer 28 type_erasure 29 wave)
+  selected="$(zenity --title="Installer boost" --window-icon=/usr/share/icons/Adwaita/48x48/apps/system-software-install.png --ok-label=Installer --list --checklist --multiple --hide-header --text="Sélectionner les bibliothèques boost à installer :" --column="" --column="Bibliothèques" "${libs[@]}")"
+
+  if [ "$selected" ]; then
+    ./b2 $(echo '|'$selected | sed "s/|/ --with-/g")
+  fi
+
   cd "$old" || exit
-  sed -i "s|^\"\*\":$|\"*\":\n  \"build-cmake\":\n    cmake_arguments: \" -DCMAKE_BUILD_TYPE=Debug -DBOOST_ROOT=/var/tmp/boost_1_64_0 -DBoost_NO_SYSTEM_PATHS=ON\"|g" "$HOME/.atom/config.cson"
+}
+
+function install_sfml {
+  old="$PWD"
+
+  cd /var/tmp/ || exit
+  curl -sL -o SFML-sources.zip "http://mirror2.sfml-dev.org/files/SFML-2.4.2-sources.zip"
+  unzip SFML-sources.zip
+
+  cd SFML-2.4.2 || exit
+  cmake -DCMAKE_BUILD_TYPE=Release .
+  make -j4 all
+
+  cd "$old" || exit
+}
+
+function install_libraries {
+  CMAKE_ARGS="-DCMAKE_BUILD_TYPE=Debug -DBOOST_ROOT=/var/tmp/boost_1_64_0 -DBoost_NO_SYSTEM_PATHS=ON -DSFML_ROOT=/var/tmp/SFML-2.4.2"
+  if cat "$HOME/.atom/config.cson" | grep -q "cmake_arguments"; then
+    sed -i "s|cmake_arguments:.*|cmake_arguments: \" $CMAKE_ARGS\"|g" "$HOME/.atom/config.cson"
+  else
+    sed -i "s|^\"\*\":$|\"*\":\n  \"build-cmake\":\n    cmake_arguments: \" $CMAKE_ARGS\"|g" "$HOME/.atom/config.cson"
+  fi
+
+  libs=(0 "Qt" 5.8 2 "boost" 1.64.0 "SFML" 2.4.2)
+  selected="$(zenity --title="Installer des bibliothèques" --window-icon=/usr/share/icons/Adwaita/48x48/apps/system-software-install.png --ok-label=Installer --list --checklist --multiple --text="Sélectionner les bibliothèques à installer :" --column="" --column="Bibliothèques" --column="Version" "${libs[@]}")"
+  if echo "$selected" | grep -q "Qt"; then
+    install_qt &
+  fi
+  if echo "$selected" | grep -q "boost"; then
+    install_boost &
+  fi
+  if echo "$selected" | grep -q "SFML"; then
+    install_sfml &
+  fi
 }
 
 function wallpaper_ilovebash {
@@ -90,6 +131,8 @@ function install_atom_theme {
   sed -i -e "s/northem-dark-atom-ui/$1/g" -e "s/atom-monokai/$2/g" "$HOME/.atom/config.cson"
 }
 
+install_libraries &
+
 #alex
 if echo "$USER" | grep -q "d16007062"; then
   xset m 3/2 3
@@ -124,8 +167,6 @@ if echo "$USER" | grep -q "e16006130"; then
   git_clone "git@github.com:L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
   add_english_things &
-  install_qt &
-  install_boost &
 fi
 
 #hugo
@@ -145,7 +186,6 @@ if echo "$USER" | grep -q "s16001821"; then
   git_clone "https://github.com/LinkIsACake/IUT.git" "$HOME/Bureau/IUT" &
   git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
-  install_boost &
   curl -so "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg" "http://vignette4.wikia.nocookie.net/warframe/images/5/5d/Warframe-Hydroid.jpg"
   xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg"
 fi
@@ -181,7 +221,6 @@ if echo "$USER" | grep -q "w16003485"; then
   git_clone "https://github.com/killian05000/pixelGalaxy.git" "$HOME/Bureau/pixelGalaxy" &
   git_clone "https://github.com/killian05000/warlockArena.git" "$HOME/Bureau/warlockArena" &
   add_english_things &
-  install_qt &
 fi
 
 #remy
@@ -192,25 +231,21 @@ fi
 #nassim
 if echo "$USER" | grep -q "e16013387"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
-  install_boost &
 fi
 
 #tristan
 if echo "$USER" | grep -q "m16020665"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
-  install_boost &
 fi
 
 #lucas
 if echo "$USER" | grep -q "d16008614"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
-  install_boost &
 fi
 
 #nathan
 if echo "$USER" | grep -q "m16016249"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
-  install_boost &
 fi
 
 #louis
