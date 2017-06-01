@@ -9,6 +9,8 @@ if [[ $TERMINIX_ID ]]; then
   source /etc/profile.d/vte.sh
 fi
 
+export PATH="/var/tmp/cmake/bin:$PATH"
+export LD_LIBRARY_PATH="/var/tmp/sfml-install/lib:/var/tmp/boost-install/lib"
 export TDS="$HOME/.cache/TheDarkSide"
 
 function atom {
@@ -33,6 +35,7 @@ alias mouse-unclick="xfconf-query -n -c xfwm4 -p /general/click_to_focus -t bool
 alias TDS-check-version="$TDS/check-version.bash"
 alias TDS-update="$TDS/update.bash"
 alias TDS-volume="$TDS/volume.bash"
+alias TDS-install-add-on="$TDS/install-add-on.bash"
 
 export BASH_IT="$HOME/.cache/TheDarkSide/bash_it"
 export BASH_IT_THEME='powerline-multiline'

@@ -23,6 +23,7 @@ Icon=$icon" > "$DESKTOP/$file_name.desktop"
 
 cp /usr/share/applications/{scilab,blender,chromium,kde4/kcalc}.desktop "$DESKTOP"
 sed -i "s|~|$HOME|g" "$HOME"/.local/share/applications/* "$HOME/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop"
+cp "$HOME"/.local/share/applications/{TheDarkSide-install-add-on,CMake}.desktop "$DESKTOP"
 make_desktop_website "The Dark Side" "https://l0l022.github.io/TheDarkSide/" "TheDarkSide" "system-help"
 make_desktop_website "ENT" "https://ident.univ-amu.fr/cas/login?service=http://ent.univ-amu.fr/Login" "ent"
 make_desktop_website "Mail" "https://outlook.office.com/owa/?realm=etu.univ-amu.fr&path=/mail" "outlook" "web-outlook"

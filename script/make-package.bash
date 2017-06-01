@@ -229,13 +229,13 @@ install_theme &> log/theme
 install_icon_theme &> log/icon_theme
 install_software &> log/software
 
-cp ../desktop/TheDarkSide-volume.desktop home_copy/.local/share/applications/
+cp ../desktop/{TheDarkSide-volume,TheDarkSide-install-add-on,CMake}.desktop home_copy/.local/share/applications/
 chmod u+x home_copy/.local/share/applications/*
 
 mkdir -p home_copy/.config/autostart
 cp ../autostart/TheDarkSide-check-version.desktop ../autostart/TheDarkSide-update.desktop home_copy/.config/autostart/
 
-cp ../TheDarkSide.bash ../script/config-at-runtime.bash ../autostart/check-version.bash ../autostart/update.bash ../desktop/volume.bash ../desktop/linux_tux_by_linux4sa.jpg "$TDS/"
-chmod u+x "$TDS"/{TheDarkSide,config-at-runtime,check-version,update,volume}.bash
+cp ../TheDarkSide.bash ../script/config-at-runtime.bash ../script/install-add-on.bash ../autostart/check-version.bash ../autostart/update.bash ../desktop/volume.bash ../desktop/linux_tux_by_linux4sa.jpg "$TDS/"
+chmod u+x "$TDS"/{TheDarkSide,config-at-runtime,install-add-on,check-version,update,volume}.bash
 tar -cJf package.tar.xz -C home_copy .
 mv package.tar.xz ../

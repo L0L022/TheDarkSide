@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Modules complémentaires
+Comment=Utilitaire pour installer des modules complémentaires
+Exec=bash -i -c TDS-install-add-on
+Terminal=false
+Type=Application
+Categories=System;
+Icon=system-software-install

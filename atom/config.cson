@@ -10,6 +10,8 @@
       "northem-dark-atom-ui"
       "atom-monokai"
     ]
+  "build-cmake":
+    cmakeArguments: "-DCMAKE_BUILD_TYPE=Debug -DBOOST_ROOT=/var/tmp/boost-install -DBoost_NO_SYSTEM_PATHS=ON -DSFML_ROOT=/var/tmp/sfml-install -DENTITYX_ROOT=/var/tmp/entityx-install"
   editor:
     showIndentGuide: true
     softWrap: true
