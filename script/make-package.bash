@@ -150,7 +150,7 @@ function install_atom_packages {
 function install_shellcheck {
 	mkdir shellcheck
 	cd shellcheck || exit
-	wget -c -O shellcheck.tar.xz http://mir.archlinux.fr/community/os/x86_64/shellcheck-0.4.6-2-x86_64.pkg.tar.xz
+	wget -c -O shellcheck.tar.xz http://mir.archlinux.fr/community/os/x86_64/shellcheck-0.4.6-3-x86_64.pkg.tar.xz
 	tar xf shellcheck.tar.xz
 	mv usr/bin/shellcheck "../$TDS/"
 	chmod u+x "../$TDS/shellcheck"
