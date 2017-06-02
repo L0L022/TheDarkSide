@@ -10,7 +10,7 @@ if [[ $TERMINIX_ID ]]; then
 fi
 
 export PATH="/var/tmp/cmake/bin:$PATH"
-export LD_LIBRARY_PATH="/var/tmp/sfml-install/lib:/var/tmp/boost-install/lib"
+export LD_LIBRARY_PATH="/var/tmp/sfml/lib:/var/tmp/boost-install/lib"
 export TDS="$HOME/.cache/TheDarkSide"
 
 function atom {

@@ -107,24 +107,26 @@ function install_sfml {
     cd /var/tmp/ || exit
 
     _download
-    curl -L -o SFML-sources.zip "http://mirror2.sfml-dev.org/files/SFML-2.4.2-sources.zip"
+    #curl -L -o SFML-sources.zip "http://mirror2.sfml-dev.org/files/SFML-2.4.2-sources.zip"
+    curl -L -o SFML.tar.bz2 "https://www.sfml-dev.org/files/SFML-2.1-linux-gcc-64bits.tar.bz2"
 
     _extract
-    unzip SFML-sources.zip
+    #unzip SFML-sources.zip
+    tar xf SFML.tar.bz2
 
-    mv -f SFML-2.4.2 sfml
-    cd sfml || exit
-    mkdir build
-    cd build || exit
-
-    _config
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/var/tmp/sfml-install
-
-    _compilation
-    make -j4 all
-
-    _install
-    make install
+    mv -f SFML-2.1 sfml
+    # cd sfml || exit
+    # mkdir build
+    # cd build || exit
+    #
+    # _config
+    # cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/var/tmp/sfml-install
+    #
+    # _compilation
+    # make -j4 all
+    #
+    # _install
+    # make install
 
     cd "$old" || exit
   fi
