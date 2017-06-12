@@ -61,8 +61,9 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
   else
     if zenity --question --title="Qt 5.8.0" --text="Voulez vous installer la dernière version de Qt ?"; then
       curl -sL -o /tmp/qt-installer.run "http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run"
-      chmod u+x /tmp/qt-installer.run
+      chmod 777 /tmp/qt-installer.run
       /tmp/qt-installer.run TargetDir=/var/tmp/Qt
+      chmod -R 777 /var/tmp/Qt
       echo "$desktop_file" > "$HOME/Bureau/qtcreator.desktop"
       chmod u+x "$HOME/Bureau/qtcreator.desktop"
     else
@@ -78,6 +79,7 @@ function install_boost {
 
     _download
     curl -L -o boost.tar.bz2 "https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.bz2"
+    chmod 666 boost.tar.bz2
 
     _extract
     tar xf boost.tar.bz2
@@ -96,6 +98,8 @@ function install_boost {
       ./b2 $(echo '|'$selected | sed "s/|/ --with-/g") --prefix=/var/tmp/boost-install install
     fi
 
+    chmod -R 777 /var/tmp/boost-install
+    chmod -R 777 /var/tmp/boost
     cd "$old" || exit
   fi
   _finish
@@ -109,12 +113,14 @@ function install_sfml {
     _download
     #curl -L -o SFML-sources.zip "http://mirror2.sfml-dev.org/files/SFML-2.4.2-sources.zip"
     curl -L -o SFML.tar.bz2 "https://www.sfml-dev.org/files/SFML-2.1-linux-gcc-64bits.tar.bz2"
+    chmod 666 SFML.tar.bz2
 
     _extract
     #unzip SFML-sources.zip
     tar xf SFML.tar.bz2
 
     mv -f SFML-2.1 sfml
+    chmod -R 777 sfml
     # cd sfml || exit
     # mkdir build
     # cd build || exit
@@ -140,11 +146,13 @@ function install_cmake {
 
     _download
     curl -L -o cmake.tar.gz "https://cmake.org/files/v3.8/cmake-3.8.2-Linux-x86_64.tar.gz"
+    chmod 666 cmake.tar.gz
 
     _extract
     tar xf cmake.tar.gz
 
     mv -f cmake-3.8.2-Linux-x86_64 cmake
+    chmod -R 777 cmake
 
     cd "$old" || exit
   fi
@@ -158,6 +166,7 @@ function install_entityx {
 
     _download
     curl -L -o entityx.zip "https://github.com/alecthomas/entityx/archive/master.zip"
+    chmod 666 entityx.zip
 
     _extract
     unzip entityx.zip
@@ -176,6 +185,8 @@ function install_entityx {
     _install
     make install
 
+    chmod -R 777 entityx
+    chmod -R 777 /var/tmp/entityx-install
     cd "$old" || exit
   fi
   _finish
