@@ -1,4 +1,4 @@
-# The Dark Side
+# The Dark Side [![Latest release](https://img.shields.io/github/release/L0L022/TheDarkSide.svg)](https://github.com/L0L022/TheDarkSide/releases) [![All releases downloads](https://img.shields.io/github/downloads/L0L022/TheDarkSide/total.svg)](https://github.com/L0L022/TheDarkSide/releases) [![GitHub issues](https://img.shields.io/github/issues/L0L022/TheDarkSide.svg)](https://github.com/L0L022/TheDarkSide/issues)
 
 Ce mini projet a pour but de faciliter l'utilisation de Linux sur les pc de l'iut.
 
