@@ -1,6 +1,7 @@
 #!/bin/bash
 
-	apm="$TDS/atom/resources/app/apm/bin/apm"
+	#apm="$TDS/.atom/resources/app/apm/bin/apm"
+	apm="apm"
 	preset=(0 c++ 1 sql 2 bash 3 html/css )
 
 	selected="$(zenity --title="Choix du preset de programation pour atom" --height=400 --width=900 --ok-label=Confirmer --cancel-label=Fermer --hide-header --text="Selectionner la language sur le lequelle vous voulez travailler" --list --checklist --auto-scroll ---column="" --column="Language" "${preset[@]}")"

@@ -1,8 +1,0 @@
-      "atom-bootstrap3"
-      "atom-html-preview"
-      "language-x86-64-assembly"
-      "linter-csslint"
-      "linter-htmlhint"
-      "scilab-language"
-      "data-atom"
-      "language-pgsql"
