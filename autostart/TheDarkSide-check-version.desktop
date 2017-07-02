@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=The Dark Side Check Version
-Comment=Tell when a new version is available
-Exec=bash -i -c TDS-check-version
-StartupNotify=false
-Terminal=false
-Icon=system-software-update
