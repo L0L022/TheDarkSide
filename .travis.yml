@@ -28,4 +28,6 @@ after_success:
   - ./appimagetool-x86_64.AppImage --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO ./appdir --updateinformation --no-appstream --verbose "$APPIMAGE"
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
   - chmod a+x ./bintray.sh
+  - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray-tidy.sh
+  - chmod a+x ./bintray-tidy.sh
   - ./bintray.sh "$APPIMAGE" || exit 1
