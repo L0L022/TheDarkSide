@@ -1,4 +1,4 @@
-# The Dark Side
+# The Dark Side [ ![Download](https://api.bintray.com/packages/l0l022/AppImages/TheDarkSide/images/download.svg) ](https://bintray.com/l0l022/AppImages/TheDarkSide/_latestVersion) [![Build Status](https://travis-ci.org/L0L022/TheDarkSide.svg?branch=1.0)](https://travis-ci.org/L0L022/TheDarkSide)
 
 Ce mini projet (hum hum) a pour but de faciliter l'utilisation de Linux sur les pc de l'iut.
 

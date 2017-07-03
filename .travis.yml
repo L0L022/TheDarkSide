@@ -26,8 +26,6 @@ after_success:
   - chmod a+x appimagetool-x86_64.AppImage
   - APPIMAGE="./TheDarkSide-$(git rev-parse --abbrev-ref HEAD)-x86_64.AppImage"
   - ./appimagetool-x86_64.AppImage --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO ./appdir --updateinformation --no-appstream --verbose "$APPIMAGE"
-  - ls -lh
-  - find .
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
   - chmod a+x ./bintray.sh
   - ./bintray.sh "$APPIMAGE" || exit 1
