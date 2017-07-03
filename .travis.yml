@@ -28,3 +28,4 @@ after_success:
   - chmod a+x ./bintray.sh
   - ./bintray.sh ./TheDarkSide*.AppImage
   - echo $?
+  - curl --upload-file ./TheDarkSide*.AppImage https://transfer.sh/TheDarkSide.AppImage 
