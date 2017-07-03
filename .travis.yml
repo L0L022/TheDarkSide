@@ -27,3 +27,4 @@ after_success:
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
   - chmod a+x ./bintray.sh
   - ./bintray.sh ./TheDarkSide*.AppImage
+  - echo $?
