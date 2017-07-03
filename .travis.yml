@@ -23,7 +23,7 @@ after_success:
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs -qmldir=qml
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
+  - mv ./TheDarkSide-x86_64.AppImage "./TheDarkSide-$(git rev-parse --abbrev-ref HEAD)-x86_64.AppImage"
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
   - chmod a+x ./bintray.sh
-  - export VERSION="$(git rev-parse --abbrev-ref HEAD)"
   - ./bintray.sh ./TheDarkSide*.AppImage
