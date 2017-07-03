@@ -25,7 +25,7 @@ after_success:
   - wget "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
   - chmod a+x appimagetool-x86_64.AppImage
   - APPIMAGE="./TheDarkSide-$(git rev-parse --abbrev-ref HEAD)-x86_64.AppImage"
-  - ./appimagetool-x86_64.AppImage --updateinformation --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO --no-appstream --verbose ./appdir
+  - ./appimagetool-x86_64.AppImage ./appdir --updateinformation --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO --no-appstream --verbose
   - ls -lh
   - find .
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
