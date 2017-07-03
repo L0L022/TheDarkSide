@@ -20,12 +20,12 @@ after_success:
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - alias appimagetool="appimagetool --updateinformation --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO"
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs -qmldir=qml
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
+  - wget "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
+  - chmod a+x appimagetool-x86_64.AppImage
   - APPIMAGE="./TheDarkSide-$(git rev-parse --abbrev-ref HEAD)-x86_64.AppImage"
-  - mv ./TheDarkSide-x86_64.AppImage "$APPIMAGE"
+  - ./appimagetool-x86_64.AppImage --updateinformation --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO ./appdir "$APPIMAGE"
   - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
   - chmod a+x ./bintray.sh
   - ./bintray.sh "$APPIMAGE" || exit 1
