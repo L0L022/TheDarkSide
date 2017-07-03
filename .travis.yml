@@ -23,4 +23,5 @@ after_success:
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs -qmldir=qml
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
-  - curl --upload-file ./TheDarkSide*.AppImage https://transfer.sh/TheDarkSide-git.$(git rev-parse --short HEAD)-x86_64.AppImage
+  - wget https://raw.githubusercontent.com/probonopd/AppImages/master/bintray.sh
+  - ./bintray.sh ./TheDarkSide*.AppImage
