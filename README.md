@@ -1,6 +1,6 @@
 # The Dark Side
 
-Ce mini projet a pour but de faciliter l'utilisation de Linux sur les pc de l'iut.
+Ce mini projet (hum hum) a pour but de faciliter l'utilisation de Linux sur les pc de l'iut.
 
 Le principe est très simple, il suffit de lancer un tout petit script qui va **totalement** métamorphoser l'apparence et le comportement du bureau, tout en ajoutant de vrais outils pour travailler comme des professionnels.
 
