@@ -7,7 +7,11 @@ SOURCES += src/main.cpp \
     src/abstractstage.cpp \
     src/initstage.cpp \
     src/welcomestage.cpp \
-    src/modifyinstallstage.cpp
+    src/modifyinstallstage.cpp \
+    src/installmodestage.cpp \
+    src/configmodulesstage.cpp \
+    src/installstage.cpp \
+    src/uninstallstage.cpp
 
 RESOURCES += qml/qml.qrc
 
@@ -55,4 +59,8 @@ HEADERS += \
     include/abstractstage.h \
     include/initstage.h \
     include/welcomestage.h \
-    include/modifyinstallstage.h
+    include/modifyinstallstage.h \
+    include/installmodestage.h \
+    include/configmodulesstage.h \
+    include/installstage.h \
+    include/uninstallstage.h

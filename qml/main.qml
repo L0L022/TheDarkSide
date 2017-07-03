@@ -38,13 +38,21 @@ ApplicationWindow {
             if (stagesSystem.currentStage) {
                 switch (stagesSystem.currentStage.stage) {
                 default:
-                case AbstractStage.Init:
                     break;
                 case AbstractStage.Welcome:
                     push("Welcome.qml")
                     break;
                 case AbstractStage.ModifyInstall:
-                    push("ModifInstall.qml")
+                    push("ModifyInstall.qml")
+                    break;
+                case AbstractStage.ConfigModules:
+                    push("ConfigModules.qml")
+                    break;
+                case AbstractStage.InstallMode:
+                    push("InstallMode.qml")
+                    break;
+                case AbstractStage.Install:
+                    push("Install.qml")
                     break;
                 }
             }
@@ -60,7 +68,6 @@ ApplicationWindow {
         text: "<font color=\"white\">❌</font>"
         anchors.rightMargin: 7
         anchors.top: parent.top
-        anchors.topMargin: 7
         anchors.right: parent.right
         onClicked: close()
         flat: true

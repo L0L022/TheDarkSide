@@ -14,7 +14,7 @@ AbstractStage::Stages InitStage::stage() const
 AbstractStage *InitStage::next()
 {
     //si TDS est installé
-    return new ModifyInstallStage(this);
+//    return new ModifyInstallStage(this);
     //sinon
-//    return new WelcomeStage(this);
+    return new WelcomeStage(this);
 }

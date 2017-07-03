@@ -1,4 +1,6 @@
 #include "include/modifyinstallstage.h"
+#include "include/uninstallstage.h"
+#include "include/configmodulesstage.h"
 
 ModifyInstallStage::ModifyInstallStage(QObject *parent)
     : AbstractStage(parent),
@@ -25,5 +27,15 @@ void ModifyInstallStage::setAction(const Action action)
 
 AbstractStage *ModifyInstallStage::next()
 {
-    return nullptr;
+    switch (m_action) {
+    case Action::ChangeModules:
+        return new ConfigModulesStage(this);
+        break;
+    case Action::Uninstall:
+        return new UninstallStage(this);
+        break;
+    default:
+        return nullptr;
+        break;
+    }
 }

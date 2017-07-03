@@ -1,4 +1,5 @@
 #include "include/welcomestage.h"
+#include "include/installmodestage.h"
 
 WelcomeStage::WelcomeStage(QObject *parent)
     : AbstractStage(parent)
@@ -11,5 +12,5 @@ AbstractStage::Stages WelcomeStage::stage() const
 
 AbstractStage *WelcomeStage::next()
 {
-    return nullptr;
+    return new InstallModeStage(this);
 }
