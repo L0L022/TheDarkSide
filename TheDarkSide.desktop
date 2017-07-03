@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=TheDarkSide
+Name=The Dark Side
+Comment=Passe du coté obscur de la force
 Exec=TheDarkSide
 Icon=TheDarkSide
 
