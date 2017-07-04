@@ -1,18 +1,18 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.2
 import QtQuick.Layouts 1.3
+import QtQuick.Window 2.0
 import TDS 1.0
 
 ApplicationWindow {
     id: window
     visible: true
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
     width: 640
     height: 480
     title: qsTr("Hello World")
     flags: Qt.Window | Qt.FramelessWindowHint
-
-    Material.theme: Material.Dark
 
     MouseArea {
         anchors.fill: parent
@@ -65,7 +65,7 @@ ApplicationWindow {
     }
 
     Button {
-        text: "<font color=\"white\">❌</font>"
+        text: "❌"
         anchors.rightMargin: 7
         anchors.top: parent.top
         anchors.right: parent.right

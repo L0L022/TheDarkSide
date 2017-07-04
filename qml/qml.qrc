@@ -1,12 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>qtquickcontrols2.conf</file>
         <file>Welcome.qml</file>
         <file>ModifyInstall.qml</file>
         <file>Install.qml</file>
         <file>ConfigModules.qml</file>
         <file>InstallMode.qml</file>
         <file>Uninstall.qml</file>
+        <file>qtquickcontrols2.conf</file>
     </qresource>
 </RCC>

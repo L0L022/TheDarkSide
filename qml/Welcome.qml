@@ -36,7 +36,7 @@ Item {
 
             RoundButton {
                 id: roundButton
-                text: "<font color=\"white\">↓</font>"
+                text: "↓"
                 highlighted: true
                 onClicked: stagesSystem.next()
             }
