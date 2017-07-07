@@ -1,11 +1,15 @@
 #include "include/installmodestage.h"
 #include "include/installstage.h"
 #include "include/configmodulesstage.h"
+#include "include/settings.h"
 
 InstallModeStage::InstallModeStage(QObject *parent)
     : AbstractStage(parent),
       m_mode(Mode::Standard)
-{}
+{
+    m_modules = new ModuleModel(this);
+    m_modules->loadFromDir(Settings::modulesPath());
+}
 
 AbstractStage::Stages InstallModeStage::stage() const
 {
@@ -32,7 +36,7 @@ AbstractStage *InstallModeStage::next()
         return new InstallStage(this);
         break;
     case Mode::Customize:
-        return new ConfigModulesStage(this);
+        return new ConfigModulesStage(m_modules.data(), this);
         break;
     default:
         return nullptr;

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>modules/atom/info.json</file>
+        <file>modules/atom/script.bash</file>
+        <file>modules/boost/signal/info.json</file>
+        <file>modules/boost/signal/script.bash</file>
+        <file>modules/boost/info.json</file>
+        <file>modules/boost/script.bash</file>
+    </qresource>
+</RCC>

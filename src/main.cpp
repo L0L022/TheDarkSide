@@ -6,6 +6,7 @@
 #include "include/abstractstage.h"
 #include "include/modifyinstallstage.h"
 #include "include/installmodestage.h"
+#include "include/modulemodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<AbstractStage>("TDS", 1, 0, "AbstractStage", "Abstract class");
     qmlRegisterType<ModifyInstallStage>("TDS", 1, 0, "ModifyInstallStage");
     qmlRegisterType<InstallModeStage>("TDS", 1, 0, "InstallModeStage");
+    qmlRegisterType<ModuleModel>("TDS", 1, 0, "ModuleModel");
+    qmlRegisterUncreatableType<ModuleItem>("TDS", 1, 0, "ModuleItem", "No");
     
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("stagesSystem", &stagesSystem);

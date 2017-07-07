@@ -6,8 +6,6 @@ Item {
     id: item1
 
     ColumnLayout {
-        x: 205
-        y: 173
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -19,7 +17,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
-            font.pointSize: 26
+            font.pointSize: 40
         }
 
         RowLayout {
@@ -28,6 +26,8 @@ Item {
             Label {
                 id: label
                 text: qsTr("Installer")
+                font.italic: true
+                font.bold: true
                 font.pointSize: 12
                 fontSizeMode: Text.Fit
                 horizontalAlignment: Text.AlignHCenter

@@ -11,9 +11,12 @@ SOURCES += src/main.cpp \
     src/installmodestage.cpp \
     src/configmodulesstage.cpp \
     src/installstage.cpp \
-    src/uninstallstage.cpp
+    src/uninstallstage.cpp \
+    src/modulemodel.cpp \
+    src/settings.cpp
 
-RESOURCES += qml/qml.qrc
+RESOURCES += qml/qml.qrc \
+    modules.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -63,4 +66,6 @@ HEADERS += \
     include/installmodestage.h \
     include/configmodulesstage.h \
     include/installstage.h \
-    include/uninstallstage.h
+    include/uninstallstage.h \
+    include/modulemodel.h \
+    include/settings.h

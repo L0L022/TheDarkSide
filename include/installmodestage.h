@@ -1,7 +1,9 @@
 #ifndef INSTALLMODESTAGE_H
 #define INSTALLMODESTAGE_H
 
+#include <QPointer>
 #include "abstractstage.h"
+#include "modulemodel.h"
 
 class InstallModeStage : public AbstractStage
 {
@@ -29,6 +31,7 @@ protected:
 
 private:
     Mode m_mode;
+    QPointer<ModuleModel> m_modules;
 };
 
 
