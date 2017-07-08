@@ -16,7 +16,7 @@ SOURCES += src/main.cpp \
     src/settings.cpp
 
 RESOURCES += qml/qml.qrc \
-    modules.qrc
+    modules/modules.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

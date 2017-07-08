@@ -1,3 +1,3 @@
 #!/bin/bash
 cd modules
-rcc --project > ../modules.qrc
+rcc --project | sed 's|\.\/|modules/|g' > ../modules.qrc

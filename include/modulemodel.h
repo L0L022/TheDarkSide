@@ -15,6 +15,7 @@ class ModuleItem : public QObject
     Q_PROPERTY(QString category READ category CONSTANT)
     Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY installedVersionChanged)
     Q_PROPERTY(QString latestVersion READ latestVersion NOTIFY latestVersionChanged)
+    Q_PROPERTY(QString directDependency READ directDependency CONSTANT)
     Q_PROPERTY(QStringList dependence READ dependence CONSTANT)
     Q_PROPERTY(bool hasSubModules READ hasSubModules CONSTANT)
     Q_PROPERTY(bool isEnabled READ isEnabled WRITE setEnabled NOTIFY isEnabledChanged)
@@ -31,6 +32,7 @@ public:
     inline QString category() const { return m_category; }
     inline QString installedVersion() const { return m_installedVersion; }
     inline QString latestVersion() const { return m_latestVersion; }
+    inline QString directDependency() const { return m_directDependency; }
     inline QStringList dependence() const { return m_dependence; }
     inline bool hasSubModules() const { return m_hasSubModules; }
 
@@ -43,7 +45,7 @@ signals:
     void isEnabledChanged();
 
 private:
-    QString m_path, m_id, m_name, m_description, m_category, m_installedVersion, m_latestVersion;
+    QString m_path, m_id, m_name, m_description, m_category, m_installedVersion, m_latestVersion, m_directDependency;
     QStringList m_dependence;
     bool m_hasSubModules, m_isEnabled;
 };
@@ -60,6 +62,7 @@ public:
         NameRole,
         DescriptionRole,
         CategoryRole,
+        DirectDependencyRole,
         DependenceRole,
         HasSubModulesRole
     };

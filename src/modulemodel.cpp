@@ -1,6 +1,5 @@
 #include "include/modulemodel.h"
 #include <QFile>
-#include <QTextStream>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -17,9 +16,7 @@ ModuleItem::ModuleItem(const QString &path, QObject *parent)
         //prob
     }
 
-    QTextStream infoStream(&fileInfo);
-    QJsonDocument infoDoc = QJsonDocument::fromJson(infoStream.readAll().toUtf8());
-
+    QJsonDocument infoDoc = QJsonDocument::fromJson(fileInfo.readAll());
     if (!infoDoc.isObject()) {
         //prob
     }
@@ -32,6 +29,19 @@ ModuleItem::ModuleItem(const QString &path, QObject *parent)
     m_dependence = infoObject["dependence"].toVariant().toStringList();
 
     m_hasSubModules = !QDir(path).entryList(QDir::Dirs | QDir::NoDotAndDotDot).empty();
+
+    fileInfo.close();
+    QDir topDir(path);
+    topDir.cdUp();
+    fileInfo.setFileName(topDir.absolutePath() + "/" + fileInfoName);
+    if (fileInfo.open(QIODevice::ReadOnly)) {
+        infoDoc = QJsonDocument::fromJson(fileInfo.readAll());
+        if (infoDoc.isObject()) {
+            infoObject = infoDoc.object();
+            m_directDependency = infoObject["id"].toString();
+            m_dependence.push_front(m_directDependency);
+        }
+    }
 }
 
 void ModuleItem::setEnabled(const bool enabled)
@@ -106,6 +116,8 @@ QVariant ModuleModel::data(const QModelIndex &index, int role) const
         return module->description();
     else if (role == CategoryRole)
         return module->category();
+    else if (role == DirectDependencyRole)
+        return module->directDependency();
     else if (role == DependenceRole)
         return module->dependence();
     else if (role == HasSubModulesRole)
@@ -129,6 +141,7 @@ QHash<int, QByteArray> ModuleModel::roleNames() const
     roles[NameRole] = "nameRole";
     roles[DescriptionRole] = "descriptionRole";
     roles[CategoryRole] = "categoryRole";
+    roles[DirectDependencyRole] = "directDependencyRole";
     roles[DependenceRole] = "dependenceRole";
     roles[HasSubModulesRole] = "hasSubModulesRole";
     return roles;

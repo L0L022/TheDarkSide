@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include <QSortFilterProxyModel>
 #include "include/stagessystem.h"
 #include "include/abstractstage.h"
 #include "include/modifyinstallstage.h"
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
 
     StagesSystem stagesSystem;
 
+    qmlRegisterType<QSortFilterProxyModel>("TDS", 1, 0, "QSortFilterProxyModel");
     qmlRegisterType<StagesSystem>("TDS", 1, 0, "StagesSystem");
     qmlRegisterUncreatableType<AbstractStage>("TDS", 1, 0, "AbstractStage", "Abstract class");
     qmlRegisterType<ModifyInstallStage>("TDS", 1, 0, "ModifyInstallStage");

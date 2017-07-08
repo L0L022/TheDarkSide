@@ -6,6 +6,14 @@ import TDS 1.0
 Item {
     id: item1
 
+    QSortFilterProxyModel {
+        id: modules
+        sourceModel: stagesSystem.currentStage.modules()
+        sortRole: ModuleModel.CategoryRole
+        filterRole: ModuleModel.DirectDependencyRole
+        filterRegExp: /^$/
+    }
+
     ListView {
         id: listView
         anchors.right: columnLayout.left
@@ -21,7 +29,32 @@ Item {
         Layout.preferredHeight: 415
         Layout.preferredWidth: 318
 
-        model: stagesSystem.currentStage.modules()
+        property var selectedModule: null
+        property var modulesStack: []
+
+        function updateSelectedModule() {
+            if (modulesStack.length > 0)
+                selectedModule = modulesStack[modulesStack.length - 1]
+            else
+                selectedModule = null
+        }
+
+        function selectModule(module) {
+            modulesStack.push(module)
+            updateSelectedModule()
+            modules.filterRegExp = new RegExp('^'+selectedModule.id+'$')
+        }
+
+        function goBack() {
+            modulesStack.pop()
+            updateSelectedModule()
+            if (selectedModule === null)
+                modules.filterRegExp = /^$/
+            else
+                modules.filterRegExp = new RegExp('^'+ selectedModule.directDependency +'$')
+        }
+
+        model: modules
 
         delegate: MouseArea {
             height: rowLayout.implicitHeight
@@ -36,6 +69,7 @@ Item {
             ItemDelegate {
                 anchors.fill: parent
                 visible: hasSubModulesRole
+                onClicked: listView.selectModule(moduleRole)
             }
 
             RowLayout {
@@ -74,7 +108,7 @@ Item {
         header: Item {
             width: listView.width
             height: visible ? backButton.implicitHeight : 0
-            visible: false
+            visible: listView.selectedModule !== null
 
             Button {
                 id: backButton
@@ -82,11 +116,12 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 text: "←"
+                onClicked: listView.goBack()
             }
 
             Label {
                 anchors.centerIn: parent
-                text: "Liste pour montrer"
+                text: listView.selectedModule === null ? "" : listView.selectedModule.name
             }
         }
 
@@ -118,6 +153,8 @@ Item {
                 NumberAnimation { properties: "x"; duration: 500; easing.type: Easing.OutBack }
             }
         }
+
+        add: popTrans
     }
 
     ColumnLayout {
