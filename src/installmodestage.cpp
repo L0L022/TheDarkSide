@@ -7,8 +7,8 @@ InstallModeStage::InstallModeStage(QObject *parent)
     : AbstractStage(parent),
       m_mode(Mode::Standard)
 {
-    m_modules = new ModuleModel(this);
-    m_modules->loadFromDir(Settings::modulesPath());
+    m_moduleSystem = new ModuleSystem(this);
+    m_moduleSystem->importModules(Settings::modulesPath());
 }
 
 AbstractStage::Stages InstallModeStage::stage() const
@@ -36,7 +36,7 @@ AbstractStage *InstallModeStage::next()
         return new InstallStage(this);
         break;
     case Mode::Customize:
-        return new ConfigModulesStage(m_modules.data(), this);
+        return new ConfigModulesStage(m_moduleSystem.data(), this);
         break;
     default:
         return nullptr;

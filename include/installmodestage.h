@@ -3,7 +3,7 @@
 
 #include <QPointer>
 #include "abstractstage.h"
-#include "modulemodel.h"
+#include "modulesystem.h"
 
 class InstallModeStage : public AbstractStage
 {
@@ -31,7 +31,7 @@ protected:
 
 private:
     Mode m_mode;
-    QPointer<ModuleModel> m_modules;
+    QPointer<ModuleSystem> m_moduleSystem;
 };
 
 

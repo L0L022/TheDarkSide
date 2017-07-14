@@ -1,4 +1,4 @@
-QT += qml quick
+QT += qml quick concurrent
 
 CONFIG += c++11
 
@@ -13,7 +13,8 @@ SOURCES += src/main.cpp \
     src/installstage.cpp \
     src/uninstallstage.cpp \
     src/modulemodel.cpp \
-    src/settings.cpp
+    src/settings.cpp \
+    src/modulesystem.cpp
 
 RESOURCES += qml/qml.qrc \
     modules/modules.qrc
@@ -68,4 +69,5 @@ HEADERS += \
     include/installstage.h \
     include/uninstallstage.h \
     include/modulemodel.h \
-    include/settings.h
+    include/settings.h \
+    include/modulesystem.h

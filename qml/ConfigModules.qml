@@ -69,7 +69,7 @@ Item {
             ItemDelegate {
                 anchors.fill: parent
                 visible: hasSubModulesRole
-                onClicked: listView.selectModule(moduleRole)
+                onClicked: listView.selectModule({"id": idRole, "name": nameRole, "directDependency": directDependencyRole})
             }
 
             RowLayout {
@@ -77,8 +77,8 @@ Item {
                 width: parent.width
 
                 CheckBox {
-                    checked: moduleRole.isEnabled
-                    onCheckedChanged: moduleRole.isEnabled = checked
+                    checked: isEnabledRole
+//                    onCheckedChanged: moduleRole.isEnabled = checked
                 }
 
                 Label {

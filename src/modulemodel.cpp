@@ -5,123 +5,88 @@
 #include <QJsonArray>
 #include <QDebug>
 #include <QDir>
+#include <QReadLocker>
+#include <QWriteLocker>
 
-ModuleItem::ModuleItem(const QString &path, QObject *parent)
-    : QObject(parent),
-      m_path(path),
-      m_isEnabled(false)
-{
-    QFile fileInfo(m_path + "/" + fileInfoName);
-    if (!fileInfo.open(QIODevice::ReadOnly)) {
-        //prob
-    }
-
-    QJsonDocument infoDoc = QJsonDocument::fromJson(fileInfo.readAll());
-    if (!infoDoc.isObject()) {
-        //prob
-    }
-
-    QJsonObject infoObject = infoDoc.object();
-    m_id = infoObject["id"].toString();
-    m_name = infoObject["name"].toString();
-    m_description = infoObject["description"].toString();
-    m_category = infoObject["category"].toString();
-    m_dependence = infoObject["dependence"].toVariant().toStringList();
-
-    m_hasSubModules = !QDir(path).entryList(QDir::Dirs | QDir::NoDotAndDotDot).empty();
-
-    fileInfo.close();
-    QDir topDir(path);
-    topDir.cdUp();
-    fileInfo.setFileName(topDir.absolutePath() + "/" + fileInfoName);
-    if (fileInfo.open(QIODevice::ReadOnly)) {
-        infoDoc = QJsonDocument::fromJson(fileInfo.readAll());
-        if (infoDoc.isObject()) {
-            infoObject = infoDoc.object();
-            m_directDependency = infoObject["id"].toString();
-            m_dependence.push_front(m_directDependency);
-        }
-    }
-}
-
-void ModuleItem::setEnabled(const bool enabled)
-{
-    if (enabled != m_isEnabled) {
-        m_isEnabled = enabled;
-        emit isEnabledChanged();
-    }
-}
+ModuleItem::ModuleItem(const QString &path, const QString &id, const QString &name,
+                       const QString &description, const QString &category, const QString &installedVersion,
+                       const QString &latestVersion, const QString &directDependency, const QStringList &dependence,
+                       const bool hasSubModules, const bool isEnabled)
+    : m_path(path), m_id(id), m_name(name), m_description(description), m_category(category),
+      m_installedVersion(installedVersion), m_latestVersion(latestVersion), m_directDependency(directDependency),
+      m_dependence(dependence), m_hasSubModules(hasSubModules), m_isEnabled(isEnabled)
+{}
 
 ModuleModel::ModuleModel(QObject *parent)
     : QAbstractListModel(parent)
 {}
 
-void ModuleModel::append(const QString &path)
+void ModuleModel::append(const ModuleItem &module)
 {
-    //FIXME check path
-    ModuleItem *module = new ModuleItem(path, this);
-
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    QWriteLocker locker(&m_lock);
     m_modules.append(module);
     endInsertRows();
 }
 
 void ModuleModel::removeAt(const int index)
 {
+    QWriteLocker locker(&m_lock);
+
     if (0 > index || index > m_modules.size())
         return;
 
     beginRemoveRows(QModelIndex(), index, index);
-    delete m_modules[index].data();
     m_modules.removeAt(index);
     endRemoveRows();
 }
 
 void ModuleModel::clear()
 {
+    QWriteLocker locker(&m_lock);
+
     beginResetModel();
-    for (auto module : m_modules)
-        delete module.data();
+    m_modules.clear();
     endResetModel();
 }
 
-void ModuleModel::loadFromDir(const QString &path)
+ModuleItem ModuleModel::at(const int index) const
 {
-    auto dirs = QDir(path).entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-    auto canonicalPath = QDir(path).canonicalPath() + "/";
-    for (const QString &dir : dirs) {
-        append(canonicalPath + dir);
-        loadFromDir(canonicalPath + dir);
-    }
+    QReadLocker locker(const_cast<QReadWriteLock*>(&m_lock));
+    return m_modules.at(index);
 }
 
 QVariant ModuleModel::data(const QModelIndex &index, int role) const
 {
+    QReadLocker locker(const_cast<QReadWriteLock*>(&m_lock));
+
     if (!index.isValid() || index.row() >= m_modules.count())
         return QVariant();
 
     auto module = m_modules.at(index.row());
-    if (!module)
-        return QVariant();
 
-    if (role == ModuleRole)
-        return QVariant::fromValue(module.data());
-    else if (role == PathRole)
-        return module->path();
+    if (role == PathRole)
+        return module.path();
     else if (role == IdRole)
-        return module->id();
+        return module.id();
     else if (role == NameRole)
-        return module->name();
+        return module.name();
     else if (role == DescriptionRole)
-        return module->description();
+        return module.description();
     else if (role == CategoryRole)
-        return module->category();
+        return module.category();
+    else if (role == InstalledVersionRole)
+        return module.installedVersion();
+    else if (role == LatestVersionRole)
+        return module.latestVersion();
     else if (role == DirectDependencyRole)
-        return module->directDependency();
+        return module.directDependency();
     else if (role == DependenceRole)
-        return module->dependence();
+        return module.dependence();
     else if (role == HasSubModulesRole)
-        return module->hasSubModules();
+        return module.hasSubModules();
+    else if (role == IsEnabledRole)
+        return module.isEnabled();
 
     return QVariant();
 }
@@ -129,20 +94,23 @@ QVariant ModuleModel::data(const QModelIndex &index, int role) const
 int ModuleModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
+    QReadLocker locker(const_cast<QReadWriteLock*>(&m_lock));
     return m_modules.count();
 }
 
 QHash<int, QByteArray> ModuleModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[ModuleRole] = "moduleRole";
     roles[PathRole] = "pathRole";
     roles[IdRole] = "idRole";
     roles[NameRole] = "nameRole";
     roles[DescriptionRole] = "descriptionRole";
     roles[CategoryRole] = "categoryRole";
+    roles[InstalledVersionRole] = "installedVersionRole";
+    roles[LatestVersionRole] = "latestVersionRole";
     roles[DirectDependencyRole] = "directDependencyRole";
     roles[DependenceRole] = "dependenceRole";
     roles[HasSubModulesRole] = "hasSubModulesRole";
+    roles[IsEnabledRole] = "isEnabledRole";
     return roles;
 }

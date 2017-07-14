@@ -3,24 +3,24 @@
 
 #include <QPointer>
 #include "abstractstage.h"
-#include "modulemodel.h"
+#include "modulesystem.h"
 
 class ConfigModulesStage : public AbstractStage
 {
     Q_OBJECT
 public:
     explicit ConfigModulesStage(QObject *parent = nullptr);
-    ConfigModulesStage(ModuleModel *modules, QObject *parent = nullptr);
+    ConfigModulesStage(ModuleSystem *moduleSystem, QObject *parent = nullptr);
 
     Stages stage() const;
 
-    Q_INVOKABLE inline ModuleModel *modules() { return m_modules.data(); }
+    Q_INVOKABLE inline ModuleModel *modules() { return m_moduleSystem->modules(); }
 
 protected:
     AbstractStage *next();
 
 private:
-    QPointer<ModuleModel> m_modules;
+    QPointer<ModuleSystem> m_moduleSystem;
 };
 
 #endif // CONFIGMODULESTAGE_H

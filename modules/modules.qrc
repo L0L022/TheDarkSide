@@ -1,13 +1,14 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource>
-<file>modules/atom/info.json</file>
-<file>modules/atom/script.bash</file>
-<file>modules/boost/info.json</file>
-<file>modules/boost/script.bash</file>
-<file>modules/boost/signal/info.json</file>
-<file>modules/boost/signal/script.bash</file>
-<file>modules/cmake/info.json</file>
-<file>modules/cmake/script.bash</file>
-<file>modules/TDSModules.sh</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>modules/atom/info.json</file>
+        <file>modules/boost/info.json</file>
+        <file>modules/boost/script.bash</file>
+        <file>modules/boost/signal/info.json</file>
+        <file>modules/boost/signal/script.bash</file>
+        <file>modules/cmake/info.json</file>
+        <file>modules/cmake/script.bash</file>
+        <file>modules/TDSModules.sh</file>
+        <file>modules/atom/apm.sh</file>
+        <file>modules/atom/script.sh</file>
+    </qresource>
 </RCC>

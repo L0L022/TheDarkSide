@@ -4,17 +4,19 @@
 
 ConfigModulesStage::ConfigModulesStage(QObject *parent)
     : AbstractStage(parent),
-      m_modules()
+      m_moduleSystem()
 {
-    m_modules = new ModuleModel(this);
+    m_moduleSystem = new ModuleSystem(this);
+    //load modules ?
 }
 
-ConfigModulesStage::ConfigModulesStage(ModuleModel *modules, QObject *parent)
+ConfigModulesStage::ConfigModulesStage(ModuleSystem *moduleSystem, QObject *parent)
     : AbstractStage(parent),
-      m_modules(modules)
+      m_moduleSystem(moduleSystem)
 {
-    if (!m_modules)
-        m_modules = new ModuleModel(this);
+    if (!m_moduleSystem)
+        m_moduleSystem = new ModuleSystem(this);
+    //load modules ?
 }
 
 AbstractStage::Stages ConfigModulesStage::stage() const
