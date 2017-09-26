@@ -80,6 +80,7 @@ if echo "$USER" | grep -q "e16006130"; then
   copy_ssh
   git_clone "git@github.com:L0L022/sem1_iut.git" "$HOME/Bureau/sem1_iut" &
   git_clone "git@github.com:L0L022/sem2_iut.git" "$HOME/Bureau/sem2_iut" &
+  git_clone "git@github.com:L0L022/sem3_iut.git" "$HOME/Bureau/sem3_iut" &
   git_clone "git@github.com:L0L022/projet_bash.git" "$HOME/Bureau/projet_bash" &
   git_clone "git@github.com:L0L022/TheDarkSide.git" "$HOME/Bureau/TheDarkSide" &
   git_clone "git@github.com:L0L022/projet7.git" "$HOME/Bureau/projet7" &
