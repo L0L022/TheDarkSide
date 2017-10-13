@@ -39,8 +39,6 @@ xdg-mime default libreoffice-writer.desktop application/vnd.oasis.opendocument.t
 xdg-mime default libreoffice-calc.desktop application/vnd.oasis.opendocument.spreadsheet application/vnd.oasis.opendocument.spreadsheet-template application/vnd.sun.xml.calc application/vnd.sun.xml.calc.template application/msexcel application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-excel.sheet.macroenabled.12 application/vnd.openxmlformats-officedocument.spreadsheetml.template application/vnd.ms-excel.template.macroenabled.12 application/vnd.ms-excel.sheet.binary.macroenabled.12 text/csv application/x-dbf text/spreadsheet application/csv application/excel application/tab-separated-values application/vnd.lotus-1-2-3 application/vnd.oasis.opendocument.chart application/vnd.oasis.opendocument.chart-template application/x-dbase application/x-dos_ms_excel application/x-excel application/x-msexcel application/x-ms-excel application/x-quattropro application/x-123 text/comma-separated-values text/tab-separated-values text/x-comma-separated-values text/x-csv application/vnd.oasis.opendocument.spreadsheet-flat-xml application/vnd.ms-works application/clarisworks application/x-iwork-numbers-sffnumbers
 xdg-mime default libreoffice-impress.desktop application/vnd.oasis.opendocument.presentation application/vnd.oasis.opendocument.presentation-template application/vnd.sun.xml.impress application/vnd.sun.xml.impress.template application/mspowerpoint application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation application/vnd.ms-powerpoint.presentation.macroenabled.12 application/vnd.openxmlformats-officedocument.presentationml.template application/vnd.ms-powerpoint.template.macroenabled.12 application/vnd.openxmlformats-officedocument.presentationml.slide application/vnd.openxmlformats-officedocument.presentationml.slideshow application/vnd.ms-powerpoint.slideshow.macroEnabled.12 application/vnd.oasis.opendocument.presentation-flat-xml application/x-iwork-keynote-sffkey
 xdg-mime default libreoffice-draw.desktop application/vnd.oasis.opendocument.graphics application/vnd.oasis.opendocument.graphics-flat-xml application/vnd.oasis.opendocument.graphics-template application/vnd.sun.xml.draw application/vnd.sun.xml.draw.template application/vnd.visio application/x-wpg application/vnd.corel-draw application/vnd.ms-publisher image/x-freehand application/clarisworks application/x-pagemaker application/pdf
-xdg-mime default org.gnome.gedit.desktop text/css text/csv text/html text/plain text/xml text/x-h text/x-c
-cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
 
 if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
   xfdesktop --arrange
@@ -125,6 +123,7 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
   gsettings set org.gnome.gedit.preferences.editor auto-indent true
 
   xdg-mime default Thunar.desktop inode/directory
+  xdg-mime default org.gnome.gedit.desktop text
   xdg-mime default ristretto.desktop image/png image/gif image/jpeg image/bmp image/x-pixmap image/tiff image/svg+xml image/x-xpixmap
   xdg-mime default evince.desktop application/pdf application/x-bzpdf application/x-gzpdf application/x-xzpdf application/x-ext-pdf application/postscript application/x-bzpostscript application/x-gzpostscript image/x-eps image/x-bzeps image/x-gzeps application/x-ext-ps application/x-ext-eps application/x-dvi application/x-bzdvi application/x-gzdvi application/x-ext-dvi image/vnd.djvu application/x-ext-djv application/x-ext-djvu image/tiff application/x-cbr application/x-cbz application/x-cb7 application/x-cbt application/x-ext-cbr application/x-ext-cbz application/x-ext-cb7 application/x-ext-cbt application/oxps application/vnd.ms-xpsdocument
   xdg-mime default xarchiver.desktop application/x-arj application/arj application/x-bzip application/x-bzip-compressed-tar application/x-gzip application/x-rar application/x-rar-compressed application/x-tar application/x-zip application/x-zip-compressed application/zip application/x-7z-compressed application/x-compressed-tar application/x-bzip2 application/x-bzip2-compressed-tar application/x-lzma-compressed-tar application/x-lzma application/x-deb application/deb application/x-xz application/x-xz-compressed-tar
@@ -136,6 +135,25 @@ if echo "$XDG_CURRENT_DESKTOP" | grep -iq "xfce"; then
   mkdir -p "$HOME/.config/xfce4/terminal/"
   echo -e "[Configuration]\nFontName=Roboto Mono Medium for Powerline Medium 12\n" > "$HOME/.config/xfce4/terminal/terminalrc"
 fi
+
+if echo "$XDG_CURRENT_DESKTOP" | grep -iq "KDE"; then
+  xdg-mime default org.kde.dolphin.desktop inode/directory
+  xdg-mime default org.kde.kate.desktop text
+  xdg-mime default org.kde.gwenview.desktop image/gif image/jpeg image/png image/bmp image/x-eps image/x-ico image/x-portable-bitmap image/x-portable-graymap image/x-portable-pixmap image/x-xbitmap image/x-xpixmap image/tiff image/x-psd image/x-webp image/webp
+  xdg-mime default okularApplication_pdf.desktop application/pdf application/x-gzpdf application/x-bzpdf application/x-wwf
+  xdg-mime default org.kde.ark.desktop application/x-tar application/x-compressed-tar application/x-bzip-compressed-tar application/x-tarz application/x-xz-compressed-tar application/x-lzma-compressed-tar application/x-lzip-compressed-tar application/x-tzo application/x-lrzip-compressed-tar application/x-lz4-compressed-tar application/vnd.debian.binary-package application/x-deb application/x-cd-image application/x-bcpio application/x-cpio application/x-cpio-compressed application/x-sv4cpio application/x-sv4crc application/x-rpm application/x-source-rpm application/vnd.ms-cab-compressed application/x-xar application/x-iso9660-appimage application/vnd.rar application/x-rar application/x-7z-compressed application/zip application/x-java-archive application/x-compress application/gzip application/x-bzip application/x-lzma application/x-xz
+
+qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \
+"var allDesktops = desktops(); \
+for (i=0;i<allDesktops.length;i++) { \
+    d = allDesktops[i]; \
+    d.wallpaperPlugin = \"org.kde.image\"; \
+    d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\"); \
+    d.writeConfig(\"Image\", \"file:///home/\") \
+}"
+fi
+
+cp -f "$HOME/.local/share/applications/mimeapps.list" "$HOME/.config/"
 
 sed -i "s|~|$HOME|g" "$HOME/.config/autostart/TheDarkSide-check-version.desktop"
 sed -i "s|~|$HOME|g" "$HOME/.config/autostart/TheDarkSide-update.desktop"
