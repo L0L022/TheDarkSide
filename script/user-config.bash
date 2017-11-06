@@ -106,6 +106,7 @@ if echo "$USER" | grep -q "s16001821"; then
   git_clone "https://github.com/LinkIsACake/IUT.git" "$HOME/Bureau/IUT" &
   git_clone "https://github.com/L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  git_clone "https://github.com/L0L022/ProjetTuteure.git" "$HOME/Bureau/ProjetTuteure" &
   curl -so "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg" "http://vignette4.wikia.nocookie.net/warframe/images/5/5d/Warframe-Hydroid.jpg"
   xfconf-query -n -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -t string -s "$HOME/.cache/TheDarkSide/Warframe-Hydroid.jpg"
 fi
@@ -129,6 +130,7 @@ if echo "$USER" | grep -q "d16013526"; then
   git config --global user.email "laurentdoiteau@free.fr"
   git config --global user.name "napoleon789789"
   git_clone "https://github.com/napoleon789789/IUT" "$HOME/Bureau/IUT" &
+  git_clone "https://github.com/L0L022/ProjetPHP" "$HOME/Bureau/ProjetPHP" &
   add_english_things &
 fi
 
@@ -140,6 +142,9 @@ if echo "$USER" | grep -q "w16003485"; then
   git_clone "https://github.com/killian05000/Projet_cpp.git" "$HOME/Bureau/Projet_cpp" &
   git_clone "https://github.com/killian05000/pixelGalaxy.git" "$HOME/Bureau/pixelGalaxy" &
   git_clone "https://github.com/killian05000/warlockArena.git" "$HOME/Bureau/warlockArena" &
+  git_clone "https://github.com/killian05000/IUT.git" "$HOME/Bureau/IUT" &
+  git_clone "https://github.com/L0L022/ProjetJava.git" "$HOME/Bureau/ProjetJava" &
+  git_clone "https://github.com/L0L022/ProjetSysteme.git" "$HOME/Bureau/ProjetSysteme" &
   add_english_things &
 fi
 
@@ -151,16 +156,19 @@ fi
 #nassim
 if echo "$USER" | grep -q "e16013387"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  git_clone "https://github.com/L0L022/ProjetTuteure.git" "$HOME/Bureau/ProjetTuteure" &
 fi
 
 #tristan
 if echo "$USER" | grep -q "m16020665"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  git_clone "https://github.com/L0L022/ProjetTuteure.git" "$HOME/Bureau/ProjetTuteure" &
 fi
 
 #lucas
 if echo "$USER" | grep -q "d16008614"; then
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  git_clone "https://github.com/L0L022/ProjetTuteure.git" "$HOME/Bureau/ProjetTuteure" &
 fi
 
 #nathan
