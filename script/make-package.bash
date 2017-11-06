@@ -43,7 +43,7 @@ function install_arc_theme {
 	get_source "horst3180/arc-theme"
 	cd arc-theme || exit
 	mkdir install
-	bash ./autogen.sh --with-gnome=3.14 --prefix="$(realpath ./install)"
+	bash ./autogen.sh --with-gnome=3.22 --prefix="$(realpath ./install)" --disable-cinnamon --disable-gnome-shell --disable-unity
 	make install
 	mv install/share/themes/* ../home_copy/.themes/
 	cd ..
@@ -150,9 +150,9 @@ function install_atom_packages {
 function install_shellcheck {
 	mkdir shellcheck
 	cd shellcheck || exit
-	wget -c -O shellcheck.tar.xz http://mir.archlinux.fr/community/os/x86_64/shellcheck-0.4.6-3-x86_64.pkg.tar.xz
-	tar xf shellcheck.tar.xz
-	mv usr/bin/shellcheck "../$TDS/"
+	wget -c -O shellcheck.tar.xz https://shellcheck.storage.googleapis.com/shellcheck-v0.4.6.linux.x86_64.tar.xz
+	tar xf shellcheck.tar.xz --strip-components=1
+	mv shellcheck "../$TDS/"
 	chmod u+x "../$TDS/shellcheck"
 	cd ..
 }
@@ -160,7 +160,7 @@ function install_shellcheck {
 function install_tree {
 	mkdir tree
 	cd tree || exit
-	wget -c -O tree.deb "http://ftp.fr.debian.org/debian/pool/main/t/tree/tree_1.6.0-1_amd64.deb"
+	wget -c -O tree.deb "http://ftp.fr.debian.org/debian/pool/main/t/tree/tree_1.7.0-5_amd64.deb"
 	ar x tree.deb data.tar.gz
 	tar xf data.tar.gz
 	mv usr/bin/tree "../$TDS/"
@@ -171,7 +171,7 @@ function install_tree {
 function install_dconf {
 	mkdir dconf
 	cd dconf || exit
-	wget -c -O dconf.deb "http://ftp.fr.debian.org/debian/pool/main/d/d-conf/dconf-cli_0.22.0-1_amd64.deb"
+	wget -c -O dconf.deb "http://ftp.fr.debian.org/debian/pool/main/d/d-conf/dconf-cli_0.26.0-2+b1_amd64.deb"
 	ar x dconf.deb data.tar.xz
 	tar xf data.tar.xz
 	mv usr/bin/dconf "../$TDS/"
@@ -194,7 +194,7 @@ function install_terminix {
 function install_tmux {
 	mkdir tmux
 	cd tmux || exit
-	wget -c -O tmux.deb "http://ftp.fr.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb"
+	wget -c -O tmux.deb "http://ftp.fr.debian.org/debian/pool/main/t/tmux/tmux_2.3-4_amd64.deb"
 	ar x tmux.deb data.tar.xz
 	tar xf data.tar.xz
 	mv usr/bin/tmux "../$TDS/"
