@@ -161,8 +161,8 @@ function install_tree {
 	mkdir tree
 	cd tree || exit
 	wget -c -O tree.deb "http://ftp.fr.debian.org/debian/pool/main/t/tree/tree_1.7.0-5_amd64.deb"
-	ar x tree.deb data.tar.gz
-	tar xf data.tar.gz
+	ar x tree.deb data.tar.xz
+	tar xf data.tar.xz
 	mv usr/bin/tree "../$TDS/"
 	chmod u+x "../$TDS/tree"
 	cd ..
