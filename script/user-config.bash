@@ -86,6 +86,10 @@ if echo "$USER" | grep -q "e16006130"; then
   git_clone "git@github.com:L0L022/projet7.git" "$HOME/Bureau/projet7" &
   git_clone "git@github.com:L0L022/SuperProjetCPP.git" "$HOME/Bureau/SuperProjetCPP" &
   svn_clone "svn://a-pedagoarles-subversion.aix.univ-amu.fr/groupe1" &
+  git_clone "git@github.com:L0L022/ProjetTuteure.git" "$HOME/Bureau/ProjetTuteure" &
+  git_clone "git@github.com:L0L022/ProjetPHP" "$HOME/Bureau/ProjetPHP" &
+  git_clone "git@github.com:L0L022/ProjetJava.git" "$HOME/Bureau/ProjetJava" &
+  git_clone "git@github.com:L0L022/ProjetSysteme.git" "$HOME/Bureau/ProjetSysteme" &
   add_english_things &
 fi
 
