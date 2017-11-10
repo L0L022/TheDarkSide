@@ -9,9 +9,9 @@ if [[ $TERMINIX_ID ]]; then
   source /etc/profile.d/vte*
 fi
 
-export PATH="/var/tmp/cmake/bin:$PATH"
-export LD_LIBRARY_PATH="/var/tmp/sfml/lib:/var/tmp/boost-install/lib"
 export TDS="$HOME/.cache/TheDarkSide"
+export PATH="/var/tmp/cmake/bin:$TDS/bin:$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="/var/tmp/sfml/lib:/var/tmp/boost-install/lib:$LD_LIBRARY_PATH"
 
 function atom {
   local PWD
