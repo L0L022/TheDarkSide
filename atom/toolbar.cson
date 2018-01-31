@@ -15,7 +15,7 @@
     type: "button"
     icon: "terminal"
     callback: "open-terminal-here:open"
-    tooltip: "Ouvre un terminal"
+    tooltip: "Ouvrir un terminal"
   }
   {
     type: "spacer"

@@ -149,7 +149,7 @@ for (i=0;i<allDesktops.length;i++) { \
     d = allDesktops[i]; \
     d.wallpaperPlugin = \"org.kde.image\"; \
     d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\"); \
-    d.writeConfig(\"Image\", \"file:///home/\") \
+    d.writeConfig(\"Image\", \"file://$HOME/.cache/TheDarkSide/linux_tux_by_linux4sa.jpg\") \
 }"
 fi
 
