@@ -1,0 +1,49 @@
+#!/bin/bash
+
+	#apm="$TDS/.atom/resources/app/apm/bin/apm"
+	apm="apm"
+	preset=(0 c++ 1 sql 2 bash 3 html/css )
+
+	selected="$(zenity --title="Choix du preset de programation pour atom" --height=400 --width=900 --ok-label=Confirmer --cancel-label=Fermer --hide-header --text="Selectionner la language sur le lequelle vous voulez travailler" --list --checklist --auto-scroll ---column="" --column="Language" "${preset[@]}")"
+
+	sed -n '/disabledPackages:/,/]/p' ~/.atom/config.cson | sed '1d'  | sed '$d'  > disable-packages.txt
+	nblignes=$(wc -l preset/atom-packages-c++.bash | cut -f 1 -d ' ')
+
+	for ((i=1; i < $nblignes ;i++))
+	{
+		(
+		ligne=$(sed -n $i\p  preset/atom-packages-$selected.bash | cut -d ' ' -f 2)
+		if grep -q "$ligne" disable-packages.txt ;
+		then
+			is_enable=$(sed -n $i\p  preset/atom-packages-$selected.bash | cut -f 1 -d ' ')
+			if [ $is_enable = "enable" ]
+			then
+				lignefinal=$(sed -n $i\p  preset/atom-packages-$selected.bash)
+				lignefinal=$(echo $apm $lignefinal )
+				$lignefinal
+			else
+				echo $ligne "deja desactiver"
+			fi
+		else
+			is_enable=$(sed -n $i\p  preset/atom-packages-$selected.bash | cut -f 1 -d ' ')
+			if [ $is_enable = "enable" ]
+			then
+				echo $ligne "deja activé"
+			else
+				lignefinal=$(sed -n $i\p  preset/atom-packages-$selected.bash)
+				lignefinal=$(echo $apm $lignefinal )
+				$lignefinal
+			fi
+		fi
+		echo "$i" ;
+		echo "# configuration de $ligne " ; sleep 0.5
+		)|
+		zenity --progress \
+		--title="Configuration des packages atom" \
+		--text="" \
+		--percentage="0" \
+		--auto-close
+	}
+	zenity --notification\
+	--window-icon="info" \
+	--text="Le preset $selected à correctement était configuré pour atom !"
